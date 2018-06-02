@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Redirect to GatherLink</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, height=device-height">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+</head>
+<body>
+    <script type="text/javascript">
+        var userAgent = navigator.userAgent.toLowerCase();
+     
+        window.onload = function(){
+     
+          if (userAgent.indexOf("android") > -1) {
+            location.href= "gatherlink://?" + location.search.substring(1);
+            setTimeout(function(){
+              location.href= "https://play.google.com/store/apps/details?id=com.tano_works.gatherlink";
+            } , 500);
+          } else if (userAgent.search(/iphone|ipad|ipod/) > -1) {
+            location.href= "https://gatherlink.site/app.html?" + location.search.substring(1);
+            // location.href= "gatherlink://?" + location.search.substring(1);
+     
+            // setTimeout(function(){
+            //   location.href= "itmss://itunes.apple.com/us/app/myapp/id123456789?ls=1&mt=8";
+            // } , 500);
+          }
+          else{
+            location.href= "https://gatherlink.site/app.html?" + location.search.substring(1);
+          }
+     
+        }
+        </script>
+</body>
+</html>

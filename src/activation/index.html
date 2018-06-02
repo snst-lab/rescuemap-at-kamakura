@@ -1,0 +1,115 @@
+<div class="index">Account Activation</div>
+<div class="input" style="clear:left;">
+    <label for="activation_email">E-mail</label>
+    <br>
+    <input type="text" name="email" id="activation_email">
+    <div id="activation_email_error" class="message_alert"></div>
+</div>
+<div class="input" style="clear:left;">
+    <label for="activation_password">Password</label>
+    <br>
+    <input type="password" name="password" id="activation_password">
+    <div id="activation_password_error" class="message_alert"></div>
+</div>
+<div class="input" style="clear:left;">
+    <label for="activation_password_retype">Password(Retype)</label>
+    <br>
+    <input type="password" name="password_retype" id="activation_password_retype">
+    <div id="activation_password_retype_error" class="message_alert"></div>
+</div>
+<div class="input" style="clear:left;">
+    <label>User Type</label>
+    <br>
+    <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="activation_personal" style="font-weight:100">
+        <input type="radio" id="activation_personal" name="type" value="personal" class="mdl-radio__button">
+        <span class="mdl-radio__label">Personal</span>
+    </label>
+    <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="activation_corporate" style="font-weight:100">
+        <input type="radio" id="activation_corporate" name="type" value="corporate" class="mdl-radio__button">
+        <span class="mdl-radio__label">Corporate</span>
+    </label>
+    <br>
+    <div id="activation_type_error" class="message_alert" style="clear:left;"></div>
+</div>
+<div style="width:100%;height:2rem;"></div>
+<div id="activation_personal_container" style="display:none;">
+    <div class="index">Personal Information</div>
+    <div class="input" style="clear:left;">
+        <div style="width:45%;margin-right:3%;float:left;">
+            <label for="activation_firstname" style="font-weight:100">First Name</label>
+            <br>
+            <input type="text" name="firstname" id="activation_firstname">
+        </div>
+        <div style="width:45%;margin-left:3%;float:left;">
+            <label for="activation_lastname" style="font-weight:100">Last Name</label>
+            <br>
+            <input type="text" name="lastname" id="activation_lastname">
+        </div>
+        <div id="activation_name_error" class="message_alert" style="clear:left;"></div>
+    </div>
+    <div style="width:100%;height:3rem;"></div>
+    <div class="input" style="clear:left;">
+        <label>Day of birth</label>
+        <br>
+        <label class="select-wrap">
+            <select name="day">
+                <option value="0">--</option>
+            </select>
+        </label>
+        /
+        <label class="select-wrap">
+            <select name="month">
+                <option value="0">--</option>
+            </select>
+        </label>
+        /
+        <label class="select-wrap">
+            <select name="year">
+                <option value="0">----</option>
+            </select>
+        </label>
+        <div id="activation_dob_error" class="message_alert"></div>
+    </div>
+    <div class="input" style="clear:left;">
+        <label>Gender</label>
+        <br>
+        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="activation_male" style="font-weight:100">
+            <input type="radio" id="activation_male" name="gender" value="male" class="mdl-radio__button">
+            <span class="mdl-radio__label">Male</span>
+        </label>
+        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="activation_female" style="font-weight:100">
+            <input type="radio" id="activation_female" name="gender" value="female" class="mdl-radio__button">
+            <span class="mdl-radio__label">Female</span>
+        </label>
+        <br>
+        <div id="activation_gender_error" class="message_alert"></div>
+    </div>
+</div>
+<div id="activation_corporate_container" style="display:none;">
+    <div class="index">Corporate Information</div>
+    <div class="input" style="clear:left;">
+        <label for="activation_corporate_name">Corporate Name</label>
+        <br>
+        <input type="text" name="corporate_name" id="activation_corporate_name">
+        <div id="activation_corporate_name_error" class="message_alert"></div>
+    </div>
+    <div class="input" style="clear:left;">
+        <label>Corporate Form</label>
+        <br>
+        <label class="select-wrap">
+            <select name="corporate_form">
+                <option value="">--</option>
+                <option value="Partnership">Partnership</option>
+                <option value="LP">LP</option>
+                <option value="LLP">LLP</option>
+                <option value="LLC">LLC</option>
+                <option value="Corporation">Corporation</option>
+                <option value="SC">SC</option>
+            </select>
+        </label>
+        <div id="activation_corporate_form_error" class="message_alert"></div>
+    </div>
+</div>
+<div style="padding:1rem;display:flex;-webkit-justify-content:space-around;justify-content:space-around;">
+    <button type="button" id="activation" class="btn1" style='display:none;'>Activate Account</button>
+</div>

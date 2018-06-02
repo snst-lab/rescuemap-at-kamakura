@@ -1,0 +1,121 @@
+<div class="index">Account</div>
+<div id="user_change_email">
+    <div class="input" style="clear:left;">
+        <label for="user_email">E-mail</label>
+        <br>
+        <input type="text" name="email" id="user_email" readonly>
+        <div id="user_email_error" class="message_alert"></div>
+    </div>
+</div>
+<div id="user_current_password" style="display:none;">
+    <div class="input" style="clear:left;">
+        <label for="user_password">Current Password</label>
+        <br>
+        <input type="password" name="password" id="user_password">
+    </div>
+</div>
+<div id="user_change_password" style="display:none;">
+    <div class="input" style="clear:left;">
+        <label for="user_new_password">New Password</label>
+        <br>
+        <input type="password" name="new_password" id="user_new_password">
+        <div id="user_new_password_error" class="message_alert"></div>
+    </div>
+    <div class="input" style="clear:left;">
+        <label for="user_new_password_retype">New Password(Retype)</label>
+        <br>
+        <input type="password" name="new_password_retype" id="user_new_password_retype">
+        <div id="user_new_password_retype_error" class="message_alert"></div>
+    </div>
+</div>
+<button type="button" id="open_user_change_email" class="btn3" style="clear:left;">Change E-mail Address</button>
+<button type="button" id="open_user_change_password" class="btn3">Change Password</button>
+<div id="user_type_error" class="message_alert" style="clear:left;"></div>
+<div id="user_personal" style="display:none;">
+    <div class="index" style="clear:left;">Personal Information</div>
+    <div class="input" style="clear:left;">
+        <div style="width:45%;margin-right:3%;float:left;">
+            <label for="user_firstname" style="font-weight:100">First Name</label>
+            <br>
+            <input type="text" name="firstname" id="user_firstname">
+        </div>
+        <div style="width:45%;margin-left:3%;float:left;">
+            <label for="user_lastname" style="font-weight:100">Last Name</label>
+            <br>
+            <input type="text" name="lastname" id="user_lastname">
+        </div>
+        <div id="user_name_error" class="message_alert"></div>
+    </div>
+    <div style="width:100%;height:3rem;"></div>
+    <div class="input" style="clear:left;">
+        <label>Day of birth</label>
+        <br>
+        <input type='text' name="day" style="border:none;width:10%;margin-left:1rem;" readonly>
+        <!-- <label class="select-wrap">
+            <select name="day">
+                <option value="0">--</option>
+            </select>
+        </label> -->
+        /
+        <input type='text' name="month" style="border:none;width:10%" readonly>
+        <!-- <label class="select-wrap">
+            <select name="month">
+                <option value="0">--</option>
+            </select>
+        </label> -->
+        /
+        <input type='text' name="year" style="border:none;width:15%" readonly>
+        <!-- <label class="select-wrap">
+            <select name="year">
+                <option value="0">----</option>
+            </select>
+        </label> -->
+    </div>
+    <div id="user_dob_error" class="message_alert"></div>
+    <div class="input" style="clear:left;">
+        <label for="gender" style="font-weight:100">Gender</label>
+        <br>
+        <input type="text" name="gender" id="gender" style="border:none;margin-left:1rem" readonly>
+    </div>
+    <!-- <div class="input" style="clear:left;">
+        <label>Gender</label>
+        <br>
+        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="user_male" style="font-weight:100">
+            <input type="radio" id="user_male" name="gender" value="male" class="mdl-radio__button">
+            <span class="mdl-radio__label">Male</span>
+        </label>
+        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="user_female" style="font-weight:100">
+            <input type="radio" id="user_female" name="gender" value="female" class="mdl-radio__button">
+            <span class="mdl-radio__label">Female</span>
+        </label>
+    </div>
+    <div id="user_gender_error" class="message_alert"></div> -->
+</div>
+<div id="user_corporate" style="display:none;">
+    <div class="index" style="clear:left;">Corporate Information</div>
+    <div class="input" style="clear:left;">
+        <label for="user_corporate_name">Corporate Name</label>
+        <br>
+        <input type="text" name="corporate_name" id="user_corporate_name">
+        <div id="user_corporate_name_error" class="message_alert"></div>
+    </div>
+    <div class="input" style="clear:left;">
+        <label>Corporate Form</label>
+        <br>
+        <label class="select-wrap">
+            <select name="corporate_form">
+                <option value="">--</option>
+                <option value="Partnership">Partnership</option>
+                <option value="LP">LP</option>
+                <option value="LLP">LLP</option>
+                <option value="LLC">LLC</option>
+                <option value="Corporation">Corporation</option>
+                <option value="SC">SC</option>
+            </select>
+        </label>
+        <div id="user_corporate_form_error" class="message_alert"></div>
+    </div>
+</div>
+<div style="padding:1rem;display:flex;-webkit-justify-content:space-around;justify-content:space-around;">
+    <button type="button" id="updateUser" class="btn1" style="display:none;">Update Account</button>
+</div>

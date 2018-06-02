@@ -1,0 +1,23 @@
+#search_container #back_to_list{
+    display:block;
+    position: absolute;
+    top:93%;
+    left:80%;
+    width:20%;
+    height:40px;
+    color: #ffffff;
+    z-index:2;
+}
+#search_container .back_text{
+    display:block;
+    position: relative;
+    height:40px;
+    float:left;
+}
+#search_container .back_icon{
+    display:block;
+    position: relative;
+    width:25px;
+    height:25px;
+    float:left;
+}
