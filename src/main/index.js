@@ -15,6 +15,7 @@ var CURRENT_LAT, CURRENT_LNG;
 var CELLSIZE = 5;
 var MAX_ZOOM = 20;
 
+var MAP_API_KEY_ANDROID = 'AIzaSyDyt-qY1wedUr13-JLhXW3cgnHM_ZxLx5U'; //Do not put api key on web server! Be careful when using git!
 var MAP_API_KEY_BROWSER = 'AIzaSyDTyfLfyPFK-vudD_ClwtWsfNQ4W3nATbQ';
 
 function init() {
