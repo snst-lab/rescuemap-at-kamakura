@@ -19,9 +19,7 @@ var SEARCHBOX_MARKER_ARRAY = [];
 var SEARCHBOX_INFO_ARRAY = [];
 
 var MAP_API_KEY = 'AIzaSyDTyfLfyPFK-vudD_ClwtWsfNQ4W3nATbQ';
-var APP_ROOT = 'https://kamakura-maps.glitch.me/';
-var STORAGE_ROOT = 'https://github.com/snst-lab/rescuemap-at-kamakura/blob/master/public/';
-
+var APP_ROOT = 'https://snst-lab.github.io/rescuemap-at-kamakura/public/';
 
 function init(){
     QUERY = getQuery();
@@ -76,7 +74,7 @@ class main {
                 } else {
                     CURRENT_POSITION_MARKER = new google.maps.Marker({
                         flat: true,
-                        icon: new google.maps.MarkerImage('img/current_position.png', null, // size
+                        icon: new google.maps.MarkerImage(APP_ROOT+'img/current_position.png', null, // size
                             null, // origin
                             new google.maps.Point(8, 8), // anchor (move to center of marker)
                             new google.maps.Size(17, 17) // scaled size (required for Retina display icon)
@@ -236,7 +234,7 @@ class main {
         }
 
         var markerClusterOptions = {
-            imagePath: STORAGE_ROOT + 'img/MarkerClusterer/',
+            imagePath: APP_ROOT + 'img/MarkerClusterer/',
             gridSize: 50,
             maxZoom: 20
         };
