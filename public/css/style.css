@@ -1,0 +1,470 @@
+/* Always set the map height explicitly to define the size of the div
+* element that contains the map. */
+html, body {
+    position:absolute;
+    height: 100vh;
+    width:100vw;
+    top:0;
+    left:0;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-family: 'Raleway', sans-serif;
+}
+
+#header{
+  position:fixed;
+  width:100vw;
+  height:4.5rem;
+  background:navy;
+  z-index:1;
+  color:white;
+  font-size:1.5rem;
+  box-sizing:border-box;
+  padding:1.5rem 2.5rem;
+  box-shadow: 0 0.2rem 0.2rem rgba(0,0,0,0.3);
+}
+
+#map_canvas{
+    margin: 0;
+    padding: 0;
+    height:100vh;
+    width:100vw;
+    overflow: hidden;
+    z-index:0;
+}
+
+.map-icon{
+    position:absolute;
+    bottom:5rem;
+    z-index:1;
+    box-sizing:border-box;
+    padding:0.85rem 0.5rem;
+    width:4rem;
+    height:4rem;
+    background:white;
+    border-radius:50%;
+    filter: drop-shadow(0 0.4rem 0.4rem rgba(0, 0, 0, 0.5));
+}
+
+@media screen and (max-aspect-ratio:11/16){
+    #current_area_icon{
+        left:25%;
+    }
+    #search_icon{
+        left:65%;
+    }
+}
+@media screen and (min-aspect-ratio:11/16) and (max-aspect-ratio:13/16){
+    #current_area_icon{
+        left:30%;
+    }
+    #search_icon{
+        left:62%;
+    }
+}
+@media screen and (min-aspect-ratio:13/16){
+    #current_area_icon{
+        left:38%;
+    }
+    #search_icon{
+        left:60%;
+    }
+}
+
+#menu_icon{
+    position: absolute;
+    top:2.5rem;
+    left:4%;
+    font-size:2rem;
+    z-index:1;
+    filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.5));
+}
+
+/* Menu Style */
+#menu{
+    position: absolute;
+    overflow-y :scroll;
+    overflow-x :hidden;
+    height:100vh;
+    z-index:2;
+    background: #ffffff;
+}
+@media screen and (max-aspect-ratio:11/16){
+    #menu{
+        left:-70vw;
+        width:70vw;
+    }
+}
+@media screen and (min-aspect-ratio:11/16) and (max-aspect-ratio:13/16){
+    #menu{
+        left:-35vw;
+        width:35vw;
+    }
+}
+@media screen and (min-aspect-ratio:13/16){
+    #menu{
+        left:-40vh;
+        width:40vh;
+    }
+}
+#menu::-webkit-scrollbar{
+    display:none;
+}
+
+/* Drawer Style */
+#drawer{
+    position: absolute;
+    overflow-y :scroll;
+    overflow-x :hidden;
+    left:100vw;
+    height:100vh;
+    z-index:2;
+    background: #ffffff;
+}
+#drawer_close{
+    position: -webkit-sticky; 
+    position: sticky;
+    top: 0;
+    margin-left:85%;
+    height:0;
+    z-index:11;
+}
+#drawer_close i{
+    padding:0.2rem;
+    font-size:2.5rem;
+    color:rgba(255, 255, 255, 0.9);
+}
+@media screen and (max-aspect-ratio:11/16){ 
+    #drawer{
+        width:60vw;
+    }
+}
+@media screen and (min-aspect-ratio:11/16) and (max-aspect-ratio:13/16){
+    #drawer{
+        width:50vh;
+    }
+}
+@media screen and (min-aspect-ratio:13/16){
+    #drawer{
+        width:60vh;
+    }
+}
+#drawer::-webkit-scrollbar{
+    display:none;
+}
+
+/* PlaceSearch Box */
+.controls {
+    border: 1px solid transparent;
+    border-radius: 2px 0 0 2px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    height: 3rem;
+    outline: none;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+#pac-input {
+    background-color: #fff;
+    font-family: Roboto;
+    font-size: 1.5rem;
+    font-weight: 300;
+    padding: 0 11px 0 13px;
+    text-overflow: ellipsis;
+    height: 3rem;
+    filter:alpha(opacity=0.8);
+    -moz-opacity: 0.8;
+    opacity: 0.8;
+    z-index:2;
+}
+@media screen and (max-aspect-ratio:11/16){
+    #pac-input {
+        margin: 2.3rem 0 0 25%;
+        width: 65%;
+    }
+}
+@media screen and (min-aspect-ratio:11/16) and (max-aspect-ratio:13/16){
+    #pac-input {
+        margin: 2.3rem 0 0 18%;
+        width: 75%;
+    }
+}
+@media screen and (min-aspect-ratio:13/16){
+    #pac-input {
+        margin: 2.3rem 0 0 12%;
+        width: 80%;
+    }
+}
+#pac-input:focus {
+    outline: solid 2px rgba(43, 182, 193, 1.0);
+    filter:alpha(opacity=1);
+    -moz-opacity: 1;
+    opacity: 1;
+}
+.pac-container {
+    font-family: Roboto;
+}
+
+.gm-style-iw{
+    width:5rem;
+}
+
+/* Modal Style */
+#modal{
+    position: absolute;
+    overflow-x :hidden;
+    /* overflow-y :hidden; */
+    overflow-y :scroll;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin:auto;
+    width:0px;
+    height:auto;
+    z-index:3;
+    background: #ffffff;
+}
+#modal::-webkit-scrollbar{
+    display:none;
+}
+
+/* Overlay Style */
+.overlay{
+    position:absolute;
+	width:100vw;
+    height:100vh;
+    background-color:rgba(0,0,0,1);
+    z-index:0;
+    filter:alpha(opacity=0);
+    -moz-opacity: 0;
+    opacity: 0;
+}
+
+/* Text Style */
+.index{
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 0;
+    font-family: 'Roboto', sans-serif;
+    /* box-sizing: border-box; */
+    padding: 0.8rem 1em;
+    font-size: 1.2rem;
+    font-weight: 200;
+    color: #ffffff;
+    background: #2bb6c1;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); 
+    z-index:10;
+}
+
+.input{
+    position:relative;
+    box-sizing: border-box;
+    width:94%;
+    margin-left:3%;
+    margin-top: 6%;
+}
+
+.input input {
+    -webkit-appearance: none;
+    position: relative;
+    width:100%;
+    border: none;
+    background: transparent;
+    text-decoration: none;
+    list-style-type: none;
+    outline: none;
+    font-size:auto;
+    font-weight: 200;
+    color: rgba(50, 50, 50, 0.8);
+    border-bottom: 1px solid rgba(200, 200, 200, 0.8);
+}
+.input input:focus{
+    border-bottom: 1.5px solid #2bb6c1;
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -o-transition: 0.5s;
+    -ms-transition: 0.5s;
+    transition: 0.5s;
+}
+
+.input label {
+    position: relative;
+    cursor: pointer;
+    height: calc(1vh * 1vw * 1.5);
+    font-size:auto;
+    font-weight: 400;
+    color: rgba(50, 50, 50, 0.8);
+}
+
+.input div[contenteditable=true]{
+    width: 96%;
+    min-height: 4.2em;
+    background: transparent;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 1em;
+    font-weight: 200;
+    line-height: 1.4em;
+    padding: 5px 8px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2) inset;
+    color: #555555;
+}
+
+.input div[contenteditable=true]:focus{
+    background: none repeat scroll 0 0 #FFFFFF;
+    outline: solid 2px rgba(43, 182, 193, 1.0);
+}
+
+.message_alert{
+    position: relative;
+    color: rgb(255, 0, 150);
+    bottom: -calc(1vh * 1vw);
+    float:left;
+}
+
+/* Select Box Style */
+.select-wrap{
+    position:relative;
+    overflow:hidden;
+    display:inline-block;
+    min-width:6em;
+    background-color:#eeeeee;
+    border:none;
+    color:#333;
+}
+   
+.select-wrap select{
+    -webkit-appearance:none;
+    -moz-appearance:none;
+    position:relative;
+    z-index:2;
+    display:block;
+    width:200%;/* fallback non calc support */
+    width:-webkit-calc(100% + 5em);
+    margin:0;
+    padding:11px 35px 11px 11px;
+    padding:.6875rem 2.1875rem .6875rem .6875rem;
+    background:#eeeeee;
+    border:none;
+    outline:none;
+    font-size:16px;
+    font-size:1rem;
+    line-height:1.5;
+}
+
+/* Button Style */
+.btn{
+    display: block;
+    text-decoration: none;
+    min-height:35px;
+    min-width: 100px;
+    width: auto;
+    font-family: 'Roboto', sans-serif;
+    font-size: small;
+    font-weight: 100;
+    line-height: 25px;
+    text-align: center;
+    margin-left:auto;
+    margin-right:auto;
+    color: #ffffff;
+    border:solid 1px #ffffff;
+    background: #2bb6c1;
+    list-style-type: none;
+    outline: none;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    -o-transition: 0.3s;
+    -ms-transition: 0.3s;
+    transition: 0.3s;
+    /* box-shadow: 0 1px 5px rgba(0,0,0,0.2);  */
+}
+.btn:hover{
+    background: #ffffff;
+    color: #2bb6c1;
+    border:solid 1px #2bb6c1;
+    /* box-shadow: none; */
+}
+
+/* Current Position Marker */
+@-moz-keyframes pulsate { 
+    from {
+        -moz-transform: scale(0.25);
+        opacity: 1.0;
+        background-color:transparent;
+    }
+    95% {
+        -moz-transform: scale(5);
+        opacity: 0;
+        background-color:#06f;
+    }
+    to {
+        -moz-transform: scale(0.8);
+        opacity: 0;
+    }
+}
+@-webkit-keyframes pulsate { 
+    from {
+        -webkit-transform: scale(0.25);
+        opacity: 1.0;
+        background-color:transparent;
+    }
+    95% {
+        -webkit-transform: scale(5);
+        opacity: 0;
+        background-color:#06f;
+    }
+    to {
+        -webkit-transform: scale(0.8);
+        opacity: 0;
+    }
+}
+/* get the container that's just outside the marker image, 
+        which just happens to have our Marker title in it */
+#map_canvas div.gmnoprint[title='Current Position'] {
+    -moz-animation: pulsate 2s ease-in-out infinite;
+    -webkit-animation: pulsate 2s ease-in-out infinite;
+    border: 0.3px solid #fff;
+    /* make a circle */
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    height: 50px!important;
+    width: 50px!important;
+    /* margin:10px 0 0 10px; */
+    /* multiply the shadows, inside and outside the circle */
+    /* -moz-box-shadow: inset 0 0 5px #06f, inset 0 0 5px #06f, inset 0 0 5px #06f, 0 0 5px #06f, 0 0 5px #06f, 0 0 5px #06f;
+    -webkit-box-shadow: inset 0 0 5px #06f, inset 0 0 5px #06f, inset 0 0 5px #06f, 0 0 5px #06f, 0 0 5px #06f, 0 0 5px #06f;
+    box-shadow: inset 0 0 5px #06f, inset 0 0 5px #06f, inset 0 0 5px #06f, 0 0 5px #06f, 0 0 5px #06f, 0 0 5px #06f; */
+    /* set the ring's new dimension and re-center it */
+
+}
+/* hide the superfluous marker image since it would expand and shrink with its containing element */
+/*    #map_canvas div[style*="987654"][title] img { */
+#map_canvas div.gmnoprint[title='Current Position'] img { display: none }
+/* compensate for iPhone and Android devices with high DPI, add iPad media query */
+/* @media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (device-width: 768px) { 
+    #map_canvas div.gmnoprint[title='Current Position']{ margin: 10px 0 0 10px }
+} */
+
+.facility{
+    display:flex;
+    width:100%;
+    height:14.5vh;
+    border-bottom:solid 0.1px lightgray;
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -o-transition: 0.5s;
+    -ms-transition: 0.5s;
+    transition: 0.5s;
+}
+.facility i{
+    width:30%;
+    margin:auto 0;
+}
+.facility .text{
+    width:70%;
+    margin:auto 0;
+}
+.facility:hover{
+    background: #2bb6c1;
+}

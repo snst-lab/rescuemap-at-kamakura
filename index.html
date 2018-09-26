@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>レスキューMap＠鎌倉</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, height=device-height">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Raleway" />
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="main_loading" class="mdl-spinner mdl-js-spinner is-active" style="position:absolute;top:50vh;left:48%;display:none;z-index:100;"></div>
+<div id="header"></div>
+<div id="drawer">
+    <div class="facility" facility="aed">
+        <i class="mdl-icon-toggle__label material-icons" style="font-size:3rem;">gps_fixed</i>
+        <div class="text">AED設置場所</div>
+    </div>
+    <div class="facility" facility="hydrant">
+        <i class="mdl-icon-toggle__label material-icons" style="font-size:3rem;">gps_fixed</i>
+        <div class="text">消火栓設置場所</div>
+    </div>
+    <div class="facility" facility="watertank">
+        <i class="mdl-icon-toggle__label material-icons" style="font-size:3rem;">gps_fixed</i>
+        <div class="text">防火水槽設置場所</div>
+    </div>
+    <div class="facility" facility="widearea-shelters">
+        <i class="mdl-icon-toggle__label material-icons" style="font-size:3rem;">gps_fixed</i>
+        <div class="text">広域避難所</div>
+    </div>
+    <div class="facility" facility="welfare-shelters">
+        <i class="mdl-icon-toggle__label material-icons" style="font-size:3rem;">gps_fixed</i>
+        <div class="text">福祉避難所</div>
+    </div>
+    <div class="facility" facility="public">
+        <i class="mdl-icon-toggle__label material-icons" style="font-size:3rem;">gps_fixed</i>
+        <div class="text">公共施設</div>
+    </div>
+    <div class="facility" facility="universal">
+        <i class="mdl-icon-toggle__label material-icons" style="font-size:3rem;">gps_fixed</i>
+        <div class="text">バリアフリー施設</div>
+    </div>
+</div>
+<div id="overlay_drawer" class="overlay"></div>
+<div id="map_canvas"></div>
+<!-- <input id="pac-input" class="controls" type="text" placeholder="Search Place"> -->
+<i id="current_area_icon" class="map-icon mdl-icon-toggle__label material-icons" style="font-size:2.5rem;">gps_fixed</i>
+<i id="search_icon" class="map-icon mdl-icon-toggle__label material-icons" style="font-size:2.5rem;">search</i>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://code.getmdl.io/1.3.0/material.min.js" defer></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/js-marker-clusterer/1.0.0/markerclusterer.js"></script>
+<script type="text/javascript" src="js/util.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript" src="js/controll.js"></script>
+</body>
+</html>
