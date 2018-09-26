@@ -1,0 +1,1 @@
+# rescuemap-at-kamakura
