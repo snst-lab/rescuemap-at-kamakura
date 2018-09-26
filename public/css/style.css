@@ -47,11 +47,6 @@ html, body {
     filter: drop-shadow(0 0.4rem 0.4rem rgba(0, 0, 0, 0.5));
 }
 
-.drawer-icon{
-    width:3rem;
-    height:3rem;
-    margin:auto;
-}
 
 @media screen and (max-aspect-ratio:11/16){
     #current_area_icon{
@@ -473,4 +468,10 @@ html, body {
 }
 .facility:hover{
     background: #2bb6c1;
+}
+
+.facility-icon{
+    width:4.5vh;
+    height:4.5vh;
+    margin: 5vh 2rem;
 }
