@@ -121,7 +121,7 @@ html, body {
     left:100vw;
     height:100vh;
     z-index:2;
-    background: #ffffff;
+    background: #dddddd;
 }
 #drawer_close{
     position: -webkit-sticky; 
@@ -458,10 +458,7 @@ html, body {
     -ms-transition: 0.5s;
     transition: 0.5s;
 }
-.facility i{
-    width:30%;
-    margin:auto 0;
-}
+
 .facility .text{
     width:70%;
     margin:auto 0;
