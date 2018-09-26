@@ -19,7 +19,9 @@ var SEARCHBOX_MARKER_ARRAY = [];
 var SEARCHBOX_INFO_ARRAY = [];
 
 var MAP_API_KEY = 'AIzaSyDTyfLfyPFK-vudD_ClwtWsfNQ4W3nATbQ';
-var publicURL = 'https://kamakura-maps.glitch.me/';
+var APP_ROOT = 'https://kamakura-maps.glitch.me/';
+var STORAGE_ROOT = 'https://github.com/snst-lab/rescuemap-at-kamakura/blob/master/public/';
+
 
 function init(){
     QUERY = getQuery();
@@ -135,37 +137,37 @@ class main {
         if(isset(QUERY)){
             switch(QUERY['facility']){
                 case 'aed':
-                    var url = publicURL + 'data/aed.csv';
+                    var url = APP_ROOT + 'data/aed.csv';
                     $('#header').text('AED設置場所＠鎌倉');
                     MAP_OBJ.setZoom(19);
                     break;
                 case 'hydrant':
-                    var url = publicURL + 'data/hydrant.csv';
+                    var url = APP_ROOT + 'data/hydrant.csv';
                     $('#header').text('消火栓設置場所＠鎌倉');
                     MAP_OBJ.setZoom(19);
                     break;
                 case 'watertank':
-                    var url = publicURL + 'data/watertank.csv';
+                    var url = APP_ROOT + 'data/watertank.csv';
                     $('#header').text('防火水槽設置場所＠鎌倉');
                     MAP_OBJ.setZoom(17);
                     break;
                 case 'widearea-shelters':
-                    var url = publicURL + 'data/widearea-shelters.csv';
+                    var url = APP_ROOT + 'data/widearea-shelters.csv';
                     $('#header').text('広域避難所＠鎌倉');
                     MAP_OBJ.setZoom(15);
                     break;
                 case 'welfare-shelters':
-                    var url = publicURL + 'data/widearea-shelters.csv';
+                    var url = APP_ROOT + 'data/widearea-shelters.csv';
                     $('#header').text('福祉避難所＠鎌倉');
                     MAP_OBJ.setZoom(15);
                     break;
                 case 'public':
-                    var url = publicURL + 'data/public.csv';
+                    var url = APP_ROOT + 'data/public.csv';
                     $('#header').text('公共施設＠鎌倉');
                     MAP_OBJ.setZoom(17);
                     break;
                 case 'universal':
-                    var url = publicURL + 'data/universal.csv';
+                    var url = APP_ROOT + 'data/universal.csv';
                     $('#header').text('バリアフリー施設＠鎌倉');
                     MAP_OBJ.setZoom(17);
                     break;
@@ -234,7 +236,7 @@ class main {
         }
 
         var markerClusterOptions = {
-            imagePath: 'https://github.com/gmaps-marker-clusterer/gmaps-marker-clusterer/blob/master/images/',
+            imagePath: STORAGE_ROOT + 'img/MarkerClusterer/',
             gridSize: 50,
             maxZoom: 20
         };
