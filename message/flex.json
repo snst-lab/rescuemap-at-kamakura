@@ -1,0 +1,228 @@
+{
+    "type": "flex",
+    "altText": "this is a flex message",
+    "contents": {
+        "type": "bubble",
+        "styles": {
+            "header": {
+                "backgroundColor": "#2bb6c1"
+            }
+        },
+        "header": {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+                {
+                    "type": "text",
+                    "text": "地図に表示する施設を選択"
+                }
+            ]
+        },
+        "body": {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+                {
+                    "type": "box",
+                    "layout": "horizontal",
+                    "contents": [
+                        {
+                            "type": "image",
+                            "url": "https://snst-lab.github.io/rescuemap-at-kamakura/public/img/aed.png",
+                            "aspectRatio": "3:1",
+                            "gravity": "center",
+                            "action": {
+                                "type": "uri",
+                                "label": "AED",
+                                "uri": "https://snst-lab.github.io/rescuemap-at-kamakura/public/?facility=aed"
+                            }
+                        },
+                        {
+                            "type": "button",
+                            "gravity": "center",
+                            "action": {
+                                "type": "uri",
+                                "label": "AED",
+                                "uri": "https://snst-lab.github.io/rescuemap-at-kamakura/public/?facility=aed"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "separator"
+                },
+                {
+                    "type": "box",
+                    "layout": "horizontal",
+                    "contents": [
+                        {
+                            "type": "image",
+                            "url": "https://snst-lab.github.io/rescuemap-at-kamakura/public/img/hydrant.png",
+                            "aspectRatio": "3:1",
+                            "gravity": "center",
+                            "action": {
+                                "type": "uri",
+                                "label": "AED",
+                                "uri": "https://snst-lab.github.io/rescuemap-at-kamakura/public/?facility=hydrant"
+                            }
+                        },
+                        {
+                            "type": "button",
+                            "gravity": "center",
+                            "action": {
+                                "type": "uri",
+                                "label": "消火栓",
+                                "uri": "https://snst-lab.github.io/rescuemap-at-kamakura/public/?facility=hydrant"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "separator"
+                },
+                {
+                    "type": "box",
+                    "layout": "horizontal",
+                    "contents": [
+                        {
+                            "type": "image",
+                            "url": "https://snst-lab.github.io/rescuemap-at-kamakura/public/img/watertank.png",
+                            "aspectRatio": "3:1",
+                            "gravity": "center",
+                            "action": {
+                                "type": "uri",
+                                "label": "AED",
+                                "uri": "https://snst-lab.github.io/rescuemap-at-kamakura/public/?facility=watertank"
+                            }
+                        },
+                        {
+                            "type": "button",
+                            "gravity": "center",
+                            "action": {
+                                "type": "uri",
+                                "label": "防火水槽",
+                                "uri": "https://kamakura-maps.glitch.me/?facility=watertank"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "separator"
+                },
+                {
+                    "type": "box",
+                    "layout": "horizontal",
+                    "contents": [
+                        {
+                            "type": "image",
+                            "url": "https://snst-lab.github.io/rescuemap-at-kamakura/public/img/widearea-shelters.png",
+                            "aspectRatio": "3:1",
+                            "gravity": "center",
+                            "action": {
+                                "type": "uri",
+                                "label": "AED",
+                                "uri": "https://snst-lab.github.io/rescuemap-at-kamakura/public/?facility=widearea-shelters"
+                            }
+                        },
+                        {
+                            "type": "button",
+                            "gravity": "center",
+                            "action": {
+                                "type": "uri",
+                                "label": "広域避難所",
+                                "uri": "https://kamakura-maps.glitch.me/?facility=widearea-shelters"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "separator"
+                },
+                {
+                    "type": "box",
+                    "layout": "horizontal",
+                    "contents": [
+                        {
+                            "type": "image",
+                            "url": "https://snst-lab.github.io/rescuemap-at-kamakura/public/img/welfare-shelters.png",
+                            "aspectRatio": "3:1",
+                            "gravity": "center",
+                            "action": {
+                                "type": "uri",
+                                "label": "AED",
+                                "uri": "https://snst-lab.github.io/rescuemap-at-kamakura/public/?facility=welfare-shelters"
+                            }
+                        },
+                        {
+                            "type": "button",
+                            "gravity": "center",
+                            "action": {
+                                "type": "uri",
+                                "label": "福祉避難所",
+                                "uri": "https://kamakura-maps.glitch.me/?facility=welfare-shelters"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "separator"
+                },
+                {
+                    "type": "box",
+                    "layout": "horizontal",
+                    "contents": [
+                        {
+                            "type": "image",
+                            "url": "https://snst-lab.github.io/rescuemap-at-kamakura/public/img/public.png",
+                            "aspectRatio": "3:1",
+                            "gravity": "center",
+                            "action": {
+                                "type": "uri",
+                                "label": "AED",
+                                "uri": "https://snst-lab.github.io/rescuemap-at-kamakura/public/?facility=public"
+                            }
+                        },
+                        {
+                            "type": "button",
+                            "gravity": "center",
+                            "action": {
+                                "type": "uri",
+                                "label": "公共施設",
+                                "uri": "https://kamakura-maps.glitch.me/?facility=public"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "separator"
+                },
+                {
+                    "type": "box",
+                    "layout": "horizontal",
+                    "contents": [
+                        {
+                            "type": "image",
+                            "url": "https://snst-lab.github.io/rescuemap-at-kamakura/public/img/universal.png",
+                            "aspectRatio": "3:1",
+                            "gravity": "center",
+                            "action": {
+                                "type": "uri",
+                                "label": "AED",
+                                "uri": "https://snst-lab.github.io/rescuemap-at-kamakura/public/?facility=universal"
+                            }
+                        },
+                        {
+                            "type": "button",
+                            "gravity": "center",
+                            "action": {
+                                "type": "uri",
+                                "label": "バリアフリー施設",
+                                "uri": "https://kamakura-maps.glitch.me/?facility=universal"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}

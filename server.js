@@ -1,11 +1,11 @@
 "use strict";
-
 const util = require('./lib/util.js');
 
 const Linebot = function(app) {
   const linebot = require('linebot');
   const line = require('@line/bot-sdk');
   const Database = require('nedb');
+
   this.db={};
   this.profile = {};
   
@@ -102,60 +102,23 @@ const Linebot = function(app) {
            });
       }
       
-      event.replyFlex = function(title,src,message,button,uri){
+      event.replyImage = function(message){
            event.reply([{
-               "type": "flex",
-                "altText": title,
-                "contents": {
-                    "type": "bubble",
-                    "header": {
-                        "type": "box",
-                        "layout": "vertical",
-                        "contents": [
-                            {
-                                "type": "text",
-                                "text": title
-                            }
-                        ]
-                    },
-                    "hero": {
-                        "type": "image",
-                        "url": src,
-                        "size": "full",
-                        "aspectRatio": "2:1"
-                    },
-                    "body": {
-                        "type": "box",
-                        "layout": "vertical",
-                        "contents": [
-                            {
-                                "type": "text",
-                                "text": message,
-                                "wrap": true
-                            }
-                        ]
-                    },
-                    "footer": {
-                        "type": "box",
-                        "layout": "horizontal",
-                        "contents": [
-                            {
-                                "type": "button",
-                                "style": "primary",
-                                "action": {
-                                    "type": "uri",
-                                    "label": button,
-                                    "uri": uri
-                                }
-                            }
-                        ]
-                    }
-                }
+                "type": "image",
+                "originalContentUrl": "https://pragma-curry.com/wp/wp-content/uploads/2018/07/Etherbot.png",
+                "previewImageUrl": "https://pragma-curry.com/wp/wp-content/uploads/2018/07/Etherbot.png"
            }]).then(data => {
                 console.log('Success', data);
            }).catch(error => {
                 console.log('Failed', error);
-                 try{throw new Error('Success');}catch(e){console.log(e);}
+           });
+      }
+      
+      event.replyFlex = function(flex){
+           event.reply([flex]).then(data => {
+                console.log('Success', data);
+           }).catch(error => {
+                console.log('Failed', error);
            });
           }
       }
@@ -235,48 +198,15 @@ const Main = function(app){
     const bot = new Linebot(app);
     const route = new Route(app,bot);
 
-    bot.getAction = function(event,message,linebot){
+    bot.getAction = function(event,message){
         try{　
             if(typeof(message['action']) == 'undefined' || message['action']==''){
                 throw 'No Action Detected.';
             }
             switch(message['action']){
-            case 'getBalance':
-                bot.writeDatabase(event.source.userId,'action=showbalance&listen=chain');
-                event.replyButton(
-                    'Select Chain','Select Ethereum chain.',
-                    'Mainnet','chain=mainnet',
-                    'Ropsten','chain=ropsten',
-                    'Rinkeby','chain=rinkeby',
-                    'Kovan','chain=kovan'
-                );
-                break;
-            case 'accountInfo':
-                event.replyFlex(
-                    "Show Account Info",
-                    "https://pragma-curry.com/wp/wp-content/uploads/2018/07/Etherbot.png",
-                    "Click the button below to show your account information.",
-                    "Show",
-                    "https://etherbot.glitch.me/redirect/accountinfo?hash=" + linebot.hash
-                );
-                break;
-            case 'payment':
-                event.replyFlex(
-                    "Payment",
-                    "https://pragma-curry.com/wp/wp-content/uploads/2018/07/Etherbot.png",
-                    "Click the button below to open URL.",
-                    "Open URL",
-                    "https://etherbot.glitch.me/redirect/transfer"
-                );
-                break;
-            case 'invoice':
-                event.replyFlex(
-                    "Manage Invoice",
-                    "https://pragma-curry.com/wp/wp-content/uploads/2018/07/Etherbot.png",
-                    "Click the button below to open URL.",
-                    "Open URL",
-                    "https://etherbot.glitch.me/redirect/invoice"
-                );
+            case 'showMap':
+                const flex = require( "./message/flex.json" );
+                event.replyFlex(flex);
                 break;
             default:
                 throw 'No Action Detected.';
@@ -289,28 +219,8 @@ const Main = function(app){
     }
 
     bot.onMessageEvent = function(event,message){
-        event.replyText(event.message.text);
+        bot.getAction(event,message);
         return false;
-
-        bot.readDatabase(event.source.userId).then(function(linebot) {
-            var status = util.queryParse(linebot.status);
-
-            if(status['action']=='getbalance' && status['listen']=='chain'){
-                  if(typeof message['chain'] !== 'undefined'){
-                      bot.writeDatabase(event.source.userId, 'action=getbalance&listen=address&chain=' + message['chain']);
-                      event.replyText('Send '+ message['chain']+ ' Address.');
-                  }
-                  else{
-                      bot.writeDatabase(event.source.userId, null);
-                      event.replyText('Failed to select chain.');
-                  }
-            }
-            else{
-                bot.getAction(event,message,linebot);
-            }
-        }).catch(function (err) {
-            return false;
-        });
     }
     
     this.onLineEvent = function(event){
