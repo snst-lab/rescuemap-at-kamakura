@@ -121,7 +121,7 @@ html, body {
     left:100vw;
     height:100vh;
     z-index:2;
-    background: #dddddd;
+    background: #eeeeee;
 }
 #drawer_close{
     position: -webkit-sticky; 
