@@ -102,7 +102,16 @@ $(document).on('touchstart', '#drawer', function (event) {
   });
 });
 
-
+function jsonLoad(dataUrl){
+  return new Promise((resolve, reject) =>  {
+      const req = new XMLHttpRequest(); 
+      req.open("get", dataUrl , true); 
+      req.send(null); 
+      req.onload = function(){
+        resolve(JSON.parse(req.responseText));
+      }
+  });
+}
 
 function csv2json(dataUrl){
       const convert  = function(csvText){
