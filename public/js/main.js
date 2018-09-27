@@ -177,12 +177,10 @@ class main {
         }else{
             return false;
         }
+        
         $("#loading").show();
-       
-
         const json = sessionStorage.getItem(QUERY['facility']);
-        console.log(json);
-        if(json !== ""){
+        if(json !== null){
             const data =  JSON.parse(json);
             var dataInCell = [];
             if(getDistance(CURRENT_LAT, CURRENT_LNG, 35.319017,139.550689) >100 ){
