@@ -15,9 +15,6 @@ var CURRENT_LAT, CURRENT_LNG;
 var CELLSIZE = 3;
 var MAX_ZOOM = 20;
 
-var SEARCHBOX_MARKER_ARRAY = [];
-var SEARCHBOX_INFO_ARRAY = [];
-
 var MAP_API_KEY = 'AIzaSyDTyfLfyPFK-vudD_ClwtWsfNQ4W3nATbQ';
 var APP_ROOT = 'https://snst-lab.github.io/rescuemap-at-kamakura/public/';
 
@@ -177,7 +174,7 @@ class main {
         }else{
             return false;
         }
-        
+
         $("#loading").show();
         const json = sessionStorage.getItem(QUERY['facility']);
         if(json !== null){
@@ -372,9 +369,6 @@ class main {
             INFO_ARRAY[i].setMap(null);
         }
         INFO_ARRAY = [];
-        for (var i = 0; i < SEARCHBOX_INFO_ARRAY.length; i++) {
-            SEARCHBOX_INFO_ARRAY[i].setMap(null);
-        }
         if (isset(MARKER_CLUSTER)) {
             MARKER_CLUSTER.clearMarkers();
         }
@@ -393,32 +387,6 @@ class main {
             MARKER_CLUSTER.clearMarkers();
         }
     }
-
-
-    static removeSearchboxMarker() {
-        for (var i = 0; i < MARKER_ARRAY.length; i++) {
-            MARKER_ARRAY[i].setMap(null);
-        }
-        MARKER_ARRAY = [];
-
-        for (var i = 0; i < INFO_ARRAY.length; i++) {
-            INFO_ARRAY[i].setMap(null);
-        }
-        INFO_ARRAY = [];
-        if (isset(MARKER_CLUSTER)) {
-            MARKER_CLUSTER.clearMarkers();
-        }
-        for (var i = 0; i < SEARCHBOX_MARKER_ARRAY.length; i++) {
-            SEARCHBOX_MARKER_ARRAY[i].setMap(null);
-        }
-        SEARCHBOX_MARKER_ARRAY = [];
-
-        for (var i = 0; i < SEARCHBOX_INFO_ARRAY.length; i++) {
-            SEARCHBOX_INFO_ARRAY[i].setMap(null);
-        }
-        SEARCHBOX_INFO_ARRAY = [];
-    }
-
 
     static onButtonClick() {
         $("#current_area_icon").on("click");
