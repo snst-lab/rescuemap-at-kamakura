@@ -176,9 +176,10 @@ class main {
         }
 
         $("#loading").show();
-        const json = sessionStorage.getItem(QUERY['facility']);
+        var json = sessionStorage.getItem(QUERY['facility']);
         if(json !== null){
-            const data =  JSON.parse(json);
+            var data =  JSON.parse(json);
+            json = null;
             var dataInCell = [];
             if(getDistance(CURRENT_LAT, CURRENT_LNG, 35.319017,139.550689) >100 ){
                 MAP_OBJ.panTo(new google.maps.LatLng(35.319017,139.550689));
