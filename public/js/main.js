@@ -135,37 +135,37 @@ class main {
         if(isset(QUERY)){
             switch(QUERY['facility']){
                 case 'aed':
-                    var url = APP_ROOT + 'data/aed.csv';
+                    var url = APP_ROOT + 'data/aed.json';
                     $('#header').text('AED設置場所＠鎌倉');
                     MAP_OBJ.setZoom(19);
                     break;
                 case 'hydrant':
-                    var url = APP_ROOT + 'data/hydrant.csv';
+                    var url = APP_ROOT + 'data/hydrant.json';
                     $('#header').text('消火栓設置場所＠鎌倉');
                     MAP_OBJ.setZoom(19);
                     break;
                 case 'watertank':
-                    var url = APP_ROOT + 'data/watertank.csv';
+                    var url = APP_ROOT + 'data/watertank.json';
                     $('#header').text('防火水槽設置場所＠鎌倉');
                     MAP_OBJ.setZoom(17);
                     break;
                 case 'widearea-shelters':
-                    var url = APP_ROOT + 'data/widearea-shelters.csv';
+                    var url = APP_ROOT + 'data/widearea-shelters.json';
                     $('#header').text('広域避難所＠鎌倉');
                     MAP_OBJ.setZoom(15);
                     break;
                 case 'welfare-shelters':
-                    var url = APP_ROOT + 'data/widearea-shelters.csv';
+                    var url = APP_ROOT + 'data/widearea-shelters.json';
                     $('#header').text('福祉避難所＠鎌倉');
                     MAP_OBJ.setZoom(15);
                     break;
                 case 'public':
-                    var url = APP_ROOT + 'data/public.csv';
+                    var url = APP_ROOT + 'data/public.json';
                     $('#header').text('公共施設＠鎌倉');
                     MAP_OBJ.setZoom(17);
                     break;
                 case 'universal':
-                    var url = APP_ROOT + 'data/universal.csv';
+                    var url = APP_ROOT + 'data/universal.json';
                     $('#header').text('バリアフリー施設＠鎌倉');
                     MAP_OBJ.setZoom(17);
                     break;
