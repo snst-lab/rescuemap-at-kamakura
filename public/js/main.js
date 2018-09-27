@@ -178,21 +178,41 @@ class main {
             return false;
         }
         $("#loading").show();
-        jsonLoad(url).then(function(data){
-              var dataInCell = [];
-              if(getDistance(CURRENT_LAT, CURRENT_LNG, 35.319017,139.550689) >100 ){
-                  MAP_OBJ.panTo(new google.maps.LatLng(35.319017,139.550689));
-              }
-              for(var i=0;i<data.length;i++){
-                  data[i]["distance"] = getDistance(CURRENT_LAT, CURRENT_LNG, data[i]["lat"], data[i]["lng"])+' km';
-                  if( data[i]['lat'] < north && data[i]['lat'] > south && data[i]['lng'] < east && data[i]['lng'] > west ) {
-                      dataInCell.push(data[i]);
-                  }
-              }
-              data = null;
-              main.drawMarker(MAP_OBJ, dataInCell);
-              $("#loading").hide();
-        });
+       
+        if(typeof sessionStorage.getItem(QUERY['facility']) !== 'undefined'){
+            const data =  JSON.parse(sessionStorage.getItem(QUERY['facility']));
+            var dataInCell = [];
+            if(getDistance(CURRENT_LAT, CURRENT_LNG, 35.319017,139.550689) >100 ){
+                MAP_OBJ.panTo(new google.maps.LatLng(35.319017,139.550689));
+            }
+            for(var i=0;i<data.length;i++){
+                data[i]["distance"] = getDistance(CURRENT_LAT, CURRENT_LNG, data[i]["lat"], data[i]["lng"])+' km';
+                if( data[i]['lat'] < north && data[i]['lat'] > south && data[i]['lng'] < east && data[i]['lng'] > west ) {
+                    dataInCell.push(data[i]);
+                }
+            }
+            data = null;
+            main.drawMarker(MAP_OBJ, dataInCell);
+            $("#loading").hide();
+
+        }else{
+            jsonLoad(url).then(function(data){
+                sessionStorage.setItem(QUERY['facility'],JSON.stringify(data));
+                var dataInCell = [];
+                if(getDistance(CURRENT_LAT, CURRENT_LNG, 35.319017,139.550689) >100 ){
+                    MAP_OBJ.panTo(new google.maps.LatLng(35.319017,139.550689));
+                }
+                for(var i=0;i<data.length;i++){
+                    data[i]["distance"] = getDistance(CURRENT_LAT, CURRENT_LNG, data[i]["lat"], data[i]["lng"])+' km';
+                    if( data[i]['lat'] < north && data[i]['lat'] > south && data[i]['lng'] < east && data[i]['lng'] > west ) {
+                        dataInCell.push(data[i]);
+                    }
+                }
+                data = null;
+                main.drawMarker(MAP_OBJ, dataInCell);
+                $("#loading").hide();
+          });
+        }
     }
 
     static drawMarker(map, data) {
