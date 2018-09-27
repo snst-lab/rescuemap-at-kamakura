@@ -223,27 +223,12 @@ class main {
                     lat: Number(data[i]["lat"]),
                     lng: Number(data[i]["lng"])
                 };
-                if (isset(CURRENT_LAT) && isset(CURRENT_LNG)) {
-                    var marker = new google.maps.Marker({
-                        position: position,
-                        // icon: {
-                        //   path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW,
-                        //   scale: 10
-                        // },
-                        // label: {
-                        //     text: getDistance(CURRENT_LAT, CURRENT_LNG, data[i]["lat"], data[i]["lng"]) ,
-                        //     color: 'purple'
-                        // },
-                        rotation: 20,
-                        map: map
-                    });
-                } else {
-                    var marker = new google.maps.Marker({
-                        position: position,
-                        rotation: 20,
-                        map: map
-                    });
-                }
+                var marker = new google.maps.Marker({
+                    position: position,
+                    rotation: 20,
+                    map: map
+                });
+         
                 MARKER_ARRAY.push(marker);
                 marker.setMap(map);
 
@@ -337,7 +322,9 @@ class main {
     static generateInfoWindow(marker, data, i) {
         var content = '';
         content += '<div style="font-weight:bold">' + data[i]["name"] + '</div>';
-        content += '<div style="font-weight:bold;color:blue">' + data[i]["distance"]  +'</div>';
+        if (isset(CURRENT_LAT) && isset(CURRENT_LNG)) {
+            content += '<div style="font-weight:bold;color:blue">' + data[i]["distance"]  +'</div>';
+        }
         content += '<button placename="'+data[i]["name"]+ '" lat="'+data[i]["lat"]+ '" lng="'+data[i]["lng"]+'" class="here btn">位置情報を発信</button>';
       
         var infoWindow = new google.maps.InfoWindow({
