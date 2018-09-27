@@ -79,7 +79,7 @@ class main {
                         map: MAP_OBJ,
                         optimized: false,
                         position: current_position,
-                        title: 'Current Position',
+                        title: 'current_position',
                         visible: true
                     });
                 }

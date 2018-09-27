@@ -387,14 +387,15 @@ html, body {
 }
 
 /* Current Position Marker */
+
 @-moz-keyframes pulsate { 
     from {
-        -moz-transform: scale(0.25);
+        -webkit-transform: scale(0.8);
         opacity: 1.0;
         background-color:transparent;
     }
     95% {
-        -moz-transform: scale(5);
+        -moz-transform: scale(7);
         opacity: 0;
         background-color:#06f;
     }
@@ -405,12 +406,12 @@ html, body {
 }
 @-webkit-keyframes pulsate { 
     from {
-        -webkit-transform: scale(0.25);
+        -webkit-transform: scale(0.8);
         opacity: 1.0;
         background-color:transparent;
     }
     95% {
-        -webkit-transform: scale(5);
+        -webkit-transform: scale(7);
         opacity: 0;
         background-color:#06f;
     }
@@ -419,29 +420,14 @@ html, body {
         opacity: 0;
     }
 }
-/* get the container that's just outside the marker image, 
-        which just happens to have our Marker title in it */
-#map_canvas div.gmnoprint[title='Current Position'] {
+#map_canvas div[title='current_position']{
     -moz-animation: pulsate 2s ease-in-out infinite;
     -webkit-animation: pulsate 2s ease-in-out infinite;
-    border: 0.3px solid #fff;
-    /* make a circle */
     -moz-border-radius: 50%;
     -webkit-border-radius: 50%;
     border-radius: 50%;
-    height: 50px!important;
-    width: 50px!important;
-    /* margin:10px 0 0 10px; */
-    /* multiply the shadows, inside and outside the circle */
-    /* -moz-box-shadow: inset 0 0 5px #06f, inset 0 0 5px #06f, inset 0 0 5px #06f, 0 0 5px #06f, 0 0 5px #06f, 0 0 5px #06f;
-    -webkit-box-shadow: inset 0 0 5px #06f, inset 0 0 5px #06f, inset 0 0 5px #06f, 0 0 5px #06f, 0 0 5px #06f, 0 0 5px #06f;
-    box-shadow: inset 0 0 5px #06f, inset 0 0 5px #06f, inset 0 0 5px #06f, 0 0 5px #06f, 0 0 5px #06f, 0 0 5px #06f; */
-    /* set the ring's new dimension and re-center it */
-
 }
-/* hide the superfluous marker image since it would expand and shrink with its containing element */
-/*    #map_canvas div[style*="987654"][title] img { */
-#map_canvas div.gmnoprint[title='Current Position'] img { display: none }
+#map_canvas div[title='current_position'] img { display: none }
 /* compensate for iPhone and Android devices with high DPI, add iPad media query */
 /* @media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (device-width: 768px) { 
     #map_canvas div.gmnoprint[title='Current Position']{ margin: 10px 0 0 10px }
