@@ -36,9 +36,6 @@
         case 'universal':
             var url = APP_ROOT + 'data/universal.csv';
             break;
-        default:
-            return false;
-            break;
     }
     csv2json(url).then(function(data){
         $('#header').html(JSON.stringify(data));
