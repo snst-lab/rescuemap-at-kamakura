@@ -176,7 +176,7 @@ class main {
         }
 
         $("#loading").show();
-        var json = sessionStorage.getItem(QUERY['facility']);
+        var json = localStorage.getItem(QUERY['facility']);
         if(json !== null){
             var data =  JSON.parse(json);
             json = null;
@@ -196,7 +196,7 @@ class main {
 
         }else{
             jsonLoad(url).then(function(data){
-                sessionStorage.setItem(QUERY['facility'],JSON.stringify(data));
+                localStorage.setItem(QUERY['facility'],JSON.stringify(data));
                 var dataInCell = [];
                 if(getDistance(CURRENT_LAT, CURRENT_LNG, 35.319017,139.550689) >100 ){
                     MAP_OBJ.panTo(new google.maps.LatLng(35.319017,139.550689));
@@ -322,7 +322,7 @@ class main {
     static generateInfoWindow(marker, data, i) {
         var content = '';
         content += '<div style="font-weight:bold">' + data[i]["name"] + '</div>';
-        if (isset(CURRENT_LAT) && isset(CURRENT_LNG)) {
+        if (navigator.geolocation) {
             content += '<div style="font-weight:bold;color:blue">' + data[i]["distance"]  +'</div>';
         }
         content += '<button placename="'+data[i]["name"]+ '" lat="'+data[i]["lat"]+ '" lng="'+data[i]["lng"]+'" class="here btn">位置情報を発信</button>';
