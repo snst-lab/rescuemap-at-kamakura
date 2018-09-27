@@ -179,8 +179,11 @@ class main {
         }
         $("#loading").show();
        
-        if(typeof sessionStorage.getItem(QUERY['facility']) !== 'undefined'){
-            const data =  JSON.parse(sessionStorage.getItem(QUERY['facility']));
+
+        const json = sessionStorage.getItem(QUERY['facility']);
+        console.log(json);
+        if(json !== ""){
+            const data =  JSON.parse(json);
             var dataInCell = [];
             if(getDistance(CURRENT_LAT, CURRENT_LNG, 35.319017,139.550689) >100 ){
                 MAP_OBJ.panTo(new google.maps.LatLng(35.319017,139.550689));

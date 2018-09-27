@@ -101,7 +101,7 @@
                             "action": {
                                 "type": "uri",
                                 "label": "防火水槽",
-                                "uri": "https://kamakura-maps.glitch.me/?facility=watertank"
+                                "uri": "https://snst-lab.github.io/rescuemap-at-kamakura/public/?facility=watertank"
                             }
                         }
                     ]
@@ -130,7 +130,7 @@
                             "action": {
                                 "type": "uri",
                                 "label": "広域避難所",
-                                "uri": "https://kamakura-maps.glitch.me/?facility=widearea-shelters"
+                                "uri": "https://snst-lab.github.io/rescuemap-at-kamakura/public/?facility=widearea-shelters"
                             }
                         }
                     ]
@@ -159,7 +159,7 @@
                             "action": {
                                 "type": "uri",
                                 "label": "福祉避難所",
-                                "uri": "https://kamakura-maps.glitch.me/?facility=welfare-shelters"
+                                "uri": "https://snst-lab.github.io/rescuemap-at-kamakura/public/?facility=welfare-shelters"
                             }
                         }
                     ]
@@ -188,7 +188,7 @@
                             "action": {
                                 "type": "uri",
                                 "label": "公共施設",
-                                "uri": "https://kamakura-maps.glitch.me/?facility=public"
+                                "uri": "https://snst-lab.github.io/rescuemap-at-kamakura/public/?facility=public"
                             }
                         }
                     ]
@@ -217,7 +217,7 @@
                             "action": {
                                 "type": "uri",
                                 "label": "バリアフリー施設",
-                                "uri": "https://kamakura-maps.glitch.me/?facility=universal"
+                                "uri": "https://snst-lab.github.io/rescuemap-at-kamakura/public/?facility=universal"
                             }
                         }
                     ]
