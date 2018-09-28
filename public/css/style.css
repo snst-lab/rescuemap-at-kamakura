@@ -156,12 +156,12 @@ html, body {
         }
         60% {
             width:80vw;
-            height:100vw;
+            height:120vw;
             top:-2vh;
         }
         100% {
             width:80vw;
-            height:100vw;
+            height:120vw;
             top:0;
             z-index:5;
         }
@@ -169,11 +169,11 @@ html, body {
     @keyframes modal_close {
         0% {
             width:80vw;
-            height:100vw;
+            height:120vw;
         }
         50% {
             width:3px;
-            height:100vw;
+            height:120vw;
         }
         100% {
             width:0;
