@@ -38,7 +38,7 @@
                             "action": {
                                 "type": "uri",
                                 "label": "AED",
-                                "uri": "https://snst-lab.github.io/rescuemap-at-kamakura/public/?facility=aed&hash=HASH"
+                                "uri": "https://snst-lab.github.io/rescuemap-at-kamakura/public/redirect.html?facility=aed&hash=HASH"
                             }
                         }
                     ]
@@ -62,7 +62,7 @@
                             "action": {
                                 "type": "uri",
                                 "label": "消火栓",
-                                "uri": "https://snst-lab.github.io/rescuemap-at-kamakura/public/?facility=hydrant&hash=HASH"
+                                "uri": "https://snst-lab.github.io/rescuemap-at-kamakura/public/redirect.html?facility=hydrant&hash=HASH"
                             }
                         }
                     ]
@@ -86,7 +86,7 @@
                             "action": {
                                 "type": "uri",
                                 "label": "防火水槽",
-                                "uri": "https://snst-lab.github.io/rescuemap-at-kamakura/public/?facility=watertank&hash=HASH"
+                                "uri": "https://snst-lab.github.io/rescuemap-at-kamakura/public/redirect.html?facility=watertank&hash=HASH"
                             }
                         }
                     ]
@@ -110,7 +110,7 @@
                             "action": {
                                 "type": "uri",
                                 "label": "広域避難所",
-                                "uri": "https://snst-lab.github.io/rescuemap-at-kamakura/public/?facility=widearea-shelters&hash=HASH"
+                                "uri": "https://snst-lab.github.io/rescuemap-at-kamakura/public/redirect.html?facility=widearea-shelters&hash=HASH"
                             }
                         }
                     ]
@@ -134,7 +134,7 @@
                             "action": {
                                 "type": "uri",
                                 "label": "福祉避難所",
-                                "uri": "https://snst-lab.github.io/rescuemap-at-kamakura/public/?facility=welfare-shelters&hash=HASH"
+                                "uri": "https://snst-lab.github.io/rescuemap-at-kamakura/public/redirect.html?facility=welfare-shelters&hash=HASH"
                             }
                         }
                     ]
@@ -158,7 +158,7 @@
                             "action": {
                                 "type": "uri",
                                 "label": "公共施設",
-                                "uri": "https://snst-lab.github.io/rescuemap-at-kamakura/public/?facility=public&hash=HASH"
+                                "uri": "https://snst-lab.github.io/rescuemap-at-kamakura/public/redirect.html?facility=public&hash=HASH"
                             }
                         }
                     ]
@@ -182,7 +182,7 @@
                             "action": {
                                 "type": "uri",
                                 "label": "バリアフリー施設",
-                                "uri": "https://snst-lab.github.io/rescuemap-at-kamakura/public/?facility=universal&hash=HASH"
+                                "uri": "https://snst-lab.github.io/rescuemap-at-kamakura/public/redirect.html?facility=universal&hash=HASH"
                             }
                         }
                     ]
@@ -206,7 +206,7 @@
                             "action": {
                                 "type": "uri",
                                 "label": "地図のみ",
-                                "uri": "https://snst-lab.github.io/rescuemap-at-kamakura/public/?hash=HASH"
+                                "uri": "https://snst-lab.github.io/rescuemap-at-kamakura/public/redirect.html?hash=HASH"
                             }
                         }
                     ]
