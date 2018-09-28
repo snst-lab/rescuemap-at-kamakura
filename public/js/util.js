@@ -128,10 +128,15 @@ class modal {
   }
 }
 
-$("#overlay").on('click', function (event) {
+
+$("#overlay").click(function () {
   drawer.close();
   modal.close();
 });
+
+$("#message").click(function(){
+  $(window).scrollTop(300);
+})
 
 
 function jsonLoad(dataUrl){
