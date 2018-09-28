@@ -14,7 +14,7 @@ var CURRENT_POSITION_MARKER;
 var CURRENT_LAT, CURRENT_LNG;
 var CELLSIZE = 3;
 
-var MAP_API_KEY = 'AIzaSyC3SP-PR2DvhwgdVjtiT8pl9HXnX_5YZ4k';
+var MAP_API_KEY = 'AIzaSyBtOVcncX6jOXw0oLJKuDOKnSB-P1p5hW4';
 var APP_ROOT = 'https://snst-lab.github.io/rescuemap-at-kamakura/public/';
 
 function init(){
