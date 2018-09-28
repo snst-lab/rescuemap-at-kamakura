@@ -223,7 +223,7 @@ const Route = function(app,bot){
     }); 
     app.post('/here', (req, res) => {
         bot.db.botstatus.findOne({ hash: req.body.hash }, (err, sender) =>{
-            const message = req.body.message =='' ? sender.displayName+'が位置を公開しました' : sender.displayName+'が位置を公開しました「'+ req.body.message+'」';　
+            const message = req.body.message =='' ? sender.displayName+'が位置を発信しました' : sender.displayName+'が位置を発信しました「'+ req.body.message+'」';　
             const address = req.body.address == undefined ? '住所情報無し' : req.body.address;
             bot.db.botstatus.find({}, (err, users)=>{
                 for(var i in users){
@@ -255,7 +255,7 @@ const Main = function(app){
                     event.replyFlex(flex);
                     break;
                 case 'broadCast':
-                    event.replyText("左下のキーボードボタンをクリックしてから、伝言を入力し、送信してください。");
+                    event.replyText("左下のキーボードボタンをクリックし、メッセージを入力・送信してください。");
                     bot.writeDatabase(event.source.userId, 'action=broadCast',linebot.hash, linebot.displayName, linebot.pictureUrl);
                     break;
                 default:

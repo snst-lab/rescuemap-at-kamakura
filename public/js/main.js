@@ -465,7 +465,7 @@ class main {
                     data: reqBody,
                     dataType: "json",
                 });
-                alert('位置情報を送信しました。');
+                alert('位置情報を発信しました。');
                 modal.close();
                 $('#loading').hide();
             });
