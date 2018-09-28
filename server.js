@@ -255,7 +255,7 @@ const Main = function(app){
                     event.replyFlex(flex);
                     break;
                 case 'broadCast':
-                    event.replyText("公開したい伝言を入力し、送信してください。");
+                    event.replyText("左下のキーボードボタンをクリックしてから、伝言を入力し、送信してください。");
                     bot.writeDatabase(event.source.userId, 'action=broadCast',linebot.hash, linebot.displayName, linebot.pictureUrl);
                     break;
                 default:
