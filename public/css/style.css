@@ -142,45 +142,88 @@ html, body {
 #drawer::-webkit-scrollbar{
     display:none;
 }
+@media screen and (max-aspect-ratio:13/16){ 
+    @keyframes modal_open{
+        0% {
+            width:0;
+            height:0;
+            top:-2vh;
+        }
+        40% {
+            width:80vw;
+            height:3px;
+            top:-2vh;
+        }
+        60% {
+            width:80vw;
+            height:100vw;
+            top:-2vh;
+        }
+        100% {
+            width:80vw;
+            height:100vw;
+            top:0;
+            z-index:5;
+        }
+    }
+    @keyframes modal_close {
+        0% {
+            width:80vw;
+            height:100vw;
+        }
+        50% {
+            width:3px;
+            height:100vw;
+        }
+        100% {
+            width:0;
+            height:0;
+            z-index:1;
+        }
+    }
+}
 
-@keyframes modal_open{
-    0% {
-        width:0;
-        height:0;
-        top:-2vh;
+@media screen and (min-aspect-ratio:13/16){
+    @keyframes modal_open{
+        0% {
+            width:0;
+            height:0;
+            top:-2vh;
+        }
+        40% {
+            width:80vw;
+            height:3px;
+            top:-2vh;
+        }
+        60% {
+            width:80vw;
+            height:70vh;
+            top:-2vh;
+        }
+        100% {
+            width:80vw;
+            height:70vh;
+            top:0;
+            z-index:5;
+        }
     }
-    40% {
-        width:80vw;
-        height:3px;
-        top:-2vh;
-    }
-    60% {
-        width:80vw;
-        height:70vh;
-        top:-2vh;
-    }
-    100% {
-        width:80vw;
-        height:70vh;
-        top:0;
-        z-index:5;
+    @keyframes modal_close {
+        0% {
+            width:80vw;
+            height:70vh;
+        }
+        50% {
+            width:3px;
+            height:70vh;
+        }
+        100% {
+            width:0;
+            height:0;
+            z-index:1;
+        }
     }
 }
-@keyframes modal_close {
-    0% {
-        width:80vw;
-        height:70vh;
-    }
-    50% {
-        width:3px;
-        height:70vh;
-    }
-    100% {
-        width:0;
-        height:0;
-        z-index:1;
-    }
-}
+
 
 
 .gm-style-iw{

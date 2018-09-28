@@ -122,6 +122,49 @@ const Linebot = function(app) {
            });
           }
       }
+      
+      this.pushText = function(to,message){
+         this.client.pushMessage(to,{
+              "type": "text",
+              "text": message
+          })
+         .then(data => {
+              console.log('Success', data);
+         })
+         .catch(error => {
+              console.log('Failed', error);
+         });
+      }
+      
+      this.pushButton = function(/*to,title,message,button,postback*/){
+         this.client.pushMessage(arguments[0],{
+            "type": "template",
+            "altText": arguments[1],
+            "template": {
+                "type": "buttons",
+                "thumbnailImageUrl": null,
+                "imageAspectRatio": "rectangle",
+                "imageSize": "cover",
+                "imageBackgroundColor": "#FFFFFF",
+                "title": arguments[1],
+                "text": arguments[2],
+                "actions": [
+                    {
+                      "type": "postback",
+                      "label": arguments[3],
+                      "data": arguments[4],
+                    }
+                ]
+            }
+         })
+         .then(data => {
+            console.log('Success', data);
+         })
+         .catch(error => {
+              console.log('Failed', error);
+         });
+      }
+      
 
       this.pushLocation = function(to,lat,lng,title,address){
          this.client.pushMessage(to,{
@@ -132,7 +175,7 @@ const Linebot = function(app) {
             "longitude": lng
          })
          .then(data => {
-            console.log('Success', data);
+              console.log('Success', data);
          })
          .catch(error => {
               console.log('Failed', error);
@@ -180,12 +223,12 @@ const Route = function(app,bot){
     }); 
     app.post('/here', (req, res) => {
         bot.db.botstatus.findOne({ hash: req.body.hash }, (err, sender) =>{
-            bot.db.botstatus.find({}, (err, result)=>{
-                var message = req.body.message =='' ? sender.displayName+'が位置を送信しました' : sender.displayName+'が位置を送信しました:'+ req.body.message;
-                var address = req.body.address == undefined ? '住所情報無し' : req.body.address;
-                for(var i in result){
-                    if(result[i]["lineid"]!='undefined'){
-                         bot.pushLocation( result[i]["lineid"], req.body.lat, req.body.lng, message, address);
+            const message = req.body.message =='' ? sender.displayName+'が位置を公開しました' : sender.displayName+'が位置を公開しました「'+ req.body.message+'」';　
+            const address = req.body.address == undefined ? '住所情報無し' : req.body.address;
+            bot.db.botstatus.find({}, (err, users)=>{
+                for(var i in users){
+                    if(users[i]["lineid"]!='undefined'){
+                         bot.pushLocation( users[i]["lineid"], req.body.lat, req.body.lng, message, address);
                     }
                 }
             });
@@ -198,31 +241,49 @@ const Main = function(app){
     const bot = new Linebot(app);
     const route = new Route(app,bot);
 
-    bot.getAction = function(event,message,hash){
+    bot.getAction = function(event,linebot,queryStr){
         try{　
-            if(typeof(message['action']) == 'undefined' || message['action']==''){
+            var query = util.queryParse(queryStr);
+            if(typeof(query['action']) == 'undefined' || query['action']==''){
                 throw 'No Action Detected.';
             }
-            switch(message['action']){
-            case 'showMap':
-                var flex = require( "./message/flex.json" );
-                var flexStr = JSON.stringify(flex);
-                flex = JSON.parse(flexStr.replace(new RegExp('HASH', 'g'), hash));
-                event.replyFlex(flex);
-                break;
-            default:
-                throw 'No Action Detected.';
-                break;
+            switch(query['action']){
+                case 'showMap':
+                    var flex = require( "./message/flex.json" );
+                    var flexStr = JSON.stringify(flex);
+                    flex = JSON.parse(flexStr.replace(new RegExp('HASH', 'g'), linebot.hash));
+                    event.replyFlex(flex);
+                    break;
+                case 'broadCast':
+                    event.replyText("公開したい伝言を入力し、送信してください。");
+                    bot.writeDatabase(event.source.userId, 'action=broadCast',linebot.hash, linebot.displayName, linebot.pictureUrl);
+                    break;
+                default:
+                    throw 'No Action Detected.';
+                    break;
             }
 
           }catch(e){
-               event.replyText(e);
+               console.log(e);
           }
     }
 
-    bot.onMessageEvent = function(event,message){
+    bot.onMessageEvent = function(event,query){
         bot.readDatabase(event.source.userId).then(function(linebot) {
-            bot.getAction(event,message,linebot.hash);
+           const status = util.queryParse(linebot.status);
+           if(status['action']=='broadCast'){
+                 const message = linebot.displayName+'からの伝言「' + event.message.text +'」';　
+                 bot.db.botstatus.find({}, (err, users)=>{
+                    for(var i in users){
+                        if(users[i]["lineid"]!='undefined'){
+                            bot.pushText(users[i]["lineid"],message);
+                        }
+                    }
+                });
+                bot.writeDatabase(event.source.userId, 'action=null',linebot.hash, linebot.displayName, linebot.pictureUrl);
+           }else{
+                bot.getAction(event,linebot,query);
+           }
           
         }).catch(function (err) {
             return false;
@@ -232,16 +293,14 @@ const Main = function(app){
     this.onLineEvent = function(event){
         switch(event.type){
            case 'message':
-              var message = util.queryParse(event.message.text);
-              bot.onMessageEvent(event,message);
+              bot.onMessageEvent(event, event.message.text);
               break;
            case 'postback':
-              var message = util.queryParse(event.postback.data);
-              bot.onMessageEvent(event,message);
+              bot.onMessageEvent(event, event.postback.data);
               break;
            case 'follow':
               var hash = util.sha256(event.source.userId);
-              bot.writeDatabase(event.source.userId, null , hash, event.source.displayName, event.source.pictureUrl);
+              bot.writeDatabase(event.source.userId, "action=null" , hash, event.source.displayName, event.source.pictureUrl);
               break;
            default:
               event.replyText('The event type is not supported.');
@@ -249,7 +308,7 @@ const Main = function(app){
         }
     }
     
-    app.listen(process.env.PORT || 80, () => {
+    app.listen(process.env.PORT || 3000, () => {
         console.log('Server is running.');
     });
     bot.onLineEvent(this.onLineEvent);
