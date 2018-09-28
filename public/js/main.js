@@ -149,12 +149,12 @@ class main {
                 case 'widearea-shelters':
                     var url = APP_ROOT + 'data/widearea-shelters.json';
                     $('#header').text('広域避難所＠鎌倉');
-                    MAP_OBJ.setZoom(15);
+                    MAP_OBJ.setZoom(14);
                     break;
                 case 'welfare-shelters':
                     var url = APP_ROOT + 'data/widearea-shelters.json';
                     $('#header').text('福祉避難所＠鎌倉');
-                    MAP_OBJ.setZoom(15);
+                    MAP_OBJ.setZoom(14);
                     break;
                 case 'public':
                     var url = APP_ROOT + 'data/public.json';
@@ -181,7 +181,7 @@ class main {
             var data =  JSON.parse(json);
             json = null;
             var dataInCell = [];
-            if(getDistance(CURRENT_LAT, CURRENT_LNG, 35.319017,139.550689) >100 ){
+            if(getDistance(CURRENT_LAT, CURRENT_LNG, 35.319017,139.550689) >50 ){
                 MAP_OBJ.panTo(new google.maps.LatLng(35.319017,139.550689));
             }
             for(var i=0;i<data.length;i++){
@@ -198,7 +198,7 @@ class main {
             jsonLoad(url).then(function(data){
                 localStorage.setItem(QUERY['facility'],JSON.stringify(data));
                 var dataInCell = [];
-                if(getDistance(CURRENT_LAT, CURRENT_LNG, 35.319017,139.550689) >100 ){
+                if(getDistance(CURRENT_LAT, CURRENT_LNG, 35.319017,139.550689) >50 ){
                     MAP_OBJ.panTo(new google.maps.LatLng(35.319017,139.550689));
                 }
                 for(var i=0;i<data.length;i++){
@@ -376,9 +376,36 @@ class main {
         }
     }
 
+    static showMapTrim(lat,lng){
+        var map_canvas = document.getElementById("map_trim");
+        var init_latlng = new google.maps.LatLng(lat,lng);
+        var options = {
+            center: init_latlng,
+            zoom: 15,
+            gestureHandling: 'greedy',
+            zoomControl: false,
+            scaleControl: false,
+            streetViewControl: true,
+            fullscreenControl: false,
+            mapTypeControl: false,
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+            mapTypeControlOptions: {
+                style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
+                position: google.maps.ControlPosition.BOTTOM_CENTER //Position of map type
+            }
+        };
+        var map_trim = new google.maps.Map(map_canvas, options);
+        var marker = new google.maps.Marker({
+            map:  map_trim,
+            position: init_latlng
+        });
+
+        console.log(lat);
+        console.log(lng);
+    }
+
     static onButtonClick() {
-        $("#current_area_icon").on("click");
-        $("#current_area_icon").on("click", function (event) {
+        $("#current_area_icon").click(function (event) {
             event.preventDefault();
             event.stopPropagation();
             drawer.close();
@@ -386,15 +413,13 @@ class main {
             main.getPosition();
         });
 
-        $('#search_icon').off("click");
-        $('#search_icon').on("click", function (event) {
+        $('#search_icon').click(function (event) {
             event.preventDefault();
             event.stopPropagation();
             drawer.open();
         });
 
-        $('.facility').off('click');
-        $('.facility').on('click',function(){
+        $('.facility').click(function(){
             QUERY['facility']=$(this).attr('facility');
             var bounds = MAP_OBJ.getBounds();
             var bounds_json = $.parseJSON(JSON.stringify(bounds));
@@ -406,11 +431,11 @@ class main {
             drawer.close();
         });
       
-        $(document).off("click", "button.here");
-        $(document).on("click", "button.here", function (event) {
+        $(document).off("click", ".here");
+        $(document).on("click", ".here", function (event) {
             event.preventDefault();
             event.stopPropagation();
-
+            
             var reqBody = {};
             if(isset(QUERY['hash'])){
               reqBody['hash']=QUERY['hash'];
@@ -419,31 +444,31 @@ class main {
               return false;
             }
 
-            var result = prompt('あなたの位置情報を送信します：追加メッセージがあれば入力してください。','人が倒れています！誰かAEDを持ってきてください！');
-
-           if(result!==null){
-              reqBody['message'] = result; 
-            }else{
-              alert('位置情報の送信をキャンセルしました。');
-              return false;
-            }
-
             const self = this;
-            ['lat','lng','placename','address'].forEach(function(attr){
-                if(isset($(self).attr(attr))){reqBody[attr] = $(self).attr(attr);}
-            });
+            main.showMapTrim($(self).attr('lat'),$(self).attr('lng'));
+            modal.open();
 
-            $.ajax({
-                url: "https://kamakura-maps.glitch.me/here",
-                type: "POST",
-                data: reqBody,
-                dataType: "json",
-                beforeSend: function (xhr, setting) {
-                    $('#main_loading').show();
-                }
+
+           $("#publish").off("click");
+           $("#publish").on("click", function(){
+                ['lat','lng','placename','address'].forEach(function(attr){
+                    if(isset($(self).attr(attr))){reqBody[attr] = $(self).attr(attr);}
+                });
+                reqBody['message'] = $('#message').text();
+
+                $.ajax({
+                    url: "https://kamakura-maps.glitch.me/here",
+                    type: "POST",
+                    data: reqBody,
+                    dataType: "json",
+                    beforeSend: function (xhr, setting) {
+                        $('#main_loading').show();
+                    }
+                });
+                alert('位置情報を送信しました。');
+                modal.close();
+                $('#main_loading').hide();
             });
-            alert('位置情報を送信しました。');
-            $('#main_loading').hide();
         });
     }
 }

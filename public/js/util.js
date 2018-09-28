@@ -59,38 +59,30 @@ class drawer {
     $("#drawer").animate({
       'left': $('body').width() - $("#drawer").width()
     }, 300);
-    $("#overlay_drawer").css({
+    $("#overlay").css({
       'z-index': 1,
     });
-    $("#overlay_drawer").animate({
+    $("#overlay").animate({
       'filter': 'alpha(opacity=0.5)',
       '-moz-opacity': 0.5,
       'opacity': 0.5,
     }, 300);
-    $('#drawer').trigger('open');
   }
   static close() {
     $("#drawer").animate({
       'left': $('body').width()
     }, 300);
-    $("#overlay_drawer").css({
+    $("#overlay").css({
       'z-index': 0,
     });
-    $("#overlay_drawer").animate({
+    $("#overlay").animate({
       'filter': 'alpha(opacity=0)',
       '-moz-opacity': 0,
       'opacity': 0,
     }, 300);
-    $('#drawer').trigger('close');
   }
 }
-$(document).on('click', "#overlay_drawer", function (event) {
-  drawer.close();
-  $('#pac-input').val('');
-});
-$(document).on('click', "#drawer_close i", function (event) {
-  drawer.close();
-});
+
 $(document).off('touchstart', '#drawer');
 $(document).on('touchstart', '#drawer', function (event) {
   var position = event.originalEvent.changedTouches[0].pageX;
@@ -101,6 +93,46 @@ $(document).on('touchstart', '#drawer', function (event) {
     }
   });
 });
+
+
+class modal {
+  static open() {
+    $('#modal').show();
+    if($('#modal').css('width')==='0px'){
+      $('#modal').css({'animation': 'modal_open 0.7s linear forwards'});
+    }
+    $('#modal').children().show();
+
+    $("#overlay").css({
+      'z-index': 1,
+    });
+    $("#overlay").animate({
+      'filter': 'alpha(opacity=0.5)',
+      '-moz-opacity': 0.5,
+      'opacity': 0.5,
+    }, 300);
+  }
+  static close() {
+    if($('#modal').css('width')!=='0px'){
+      $('#modal').css({'animation': 'modal_close 0.3s linear forwards'});
+    }
+    $('#modal').children().hide();
+    $("#overlay").css({
+      'z-index': 0,
+    });
+    $("#overlay").animate({
+      'filter': 'alpha(opacity=0)',
+      '-moz-opacity': 0,
+      'opacity': 0,
+    }, 300);
+  }
+}
+
+$("#overlay").on('click', function (event) {
+  drawer.close();
+  modal.close();
+});
+
 
 function jsonLoad(dataUrl){
   return new Promise((resolve, reject) =>  {

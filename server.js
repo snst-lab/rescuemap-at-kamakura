@@ -102,11 +102,11 @@ const Linebot = function(app) {
            });
       }
       
-      event.replyImage = function(message){
+      event.replyImage = function(url){
            event.reply([{
                 "type": "image",
-                "originalContentUrl": "https://pragma-curry.com/wp/wp-content/uploads/2018/07/Etherbot.png",
-                "previewImageUrl": "https://pragma-curry.com/wp/wp-content/uploads/2018/07/Etherbot.png"
+                "originalContentUrl": url,
+                "previewImageUrl": url
            }]).then(data => {
                 console.log('Success', data);
            }).catch(error => {
@@ -198,14 +198,16 @@ const Main = function(app){
     const bot = new Linebot(app);
     const route = new Route(app,bot);
 
-    bot.getAction = function(event,message){
+    bot.getAction = function(event,message,hash){
         try{　
             if(typeof(message['action']) == 'undefined' || message['action']==''){
                 throw 'No Action Detected.';
             }
             switch(message['action']){
             case 'showMap':
-                const flex = require( "./message/flex.json" );
+                var flex = require( "./message/flex.json" );
+                var flexStr = JSON.stringify(flex);
+                flex = JSON.parse(flexStr.replace(new RegExp('HASH', 'g'), hash));
                 event.replyFlex(flex);
                 break;
             default:
@@ -219,8 +221,12 @@ const Main = function(app){
     }
 
     bot.onMessageEvent = function(event,message){
-        bot.getAction(event,message);
-        return false;
+        bot.readDatabase(event.source.userId).then(function(linebot) {
+            bot.getAction(event,message,linebot.hash);
+          
+        }).catch(function (err) {
+            return false;
+        });
     }
     
     this.onLineEvent = function(event){
