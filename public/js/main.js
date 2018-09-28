@@ -26,7 +26,7 @@ function init(){
 
 class main {
     constructor() {
-        $('body').append('<script src="https://maps.googleapis.com/maps/api/js?key=' + MAP_API_KEY + '&language=en&region=US&callback=init" async defer></script>');
+        $('body').append('<script src="https://maps.googleapis.com/maps/api/js?key=' + MAP_API_KEY + '&libraries=places&language=en&region=US&callback=init" async defer></script>');
     }
 
     static showMap() {
