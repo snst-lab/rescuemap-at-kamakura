@@ -4,5 +4,6 @@ This makes it possible to know the position on the map and the distance from the
 This can be used for communication assistance and information exchange such as disaster and life saving.
 
 
-## QR code for LINE friends add
-![Image of QR](https://github.com/snst-lab/rescuemap-at-kamakura/blob/master/public/img/qr.png)
+##  Scan the QR code below or Tap the button below to add to your LINE friends
+![Image of QR](http://qr-official.line.me/L/JZKMDAoqDz.png)
+[![Image of button](https://scdn.line-apps.com/n/line_add_friends/btn/ja.png)](http://github.com)
