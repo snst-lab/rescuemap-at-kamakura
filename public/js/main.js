@@ -129,6 +129,8 @@ class main {
     }
 
     static pullMarker(north, south, east, west) {
+        $('#loading').show();
+
         if(isset(QUERY)){
             switch(QUERY['facility']){
                 case 'aed':
@@ -175,7 +177,6 @@ class main {
             return false;
         }
 
-        $("#loading").show();
         var json = localStorage.getItem(QUERY['facility']);
         if(json !== null){
             var data =  JSON.parse(json);
@@ -451,6 +452,8 @@ class main {
 
            $("#publish").off("click");
            $("#publish").on("click", function(){
+                $('#loading').show();
+                
                 ['lat','lng','placename','address'].forEach(function(attr){
                     if(isset($(self).attr(attr))){reqBody[attr] = $(self).attr(attr);}
                 });
@@ -461,13 +464,10 @@ class main {
                     type: "POST",
                     data: reqBody,
                     dataType: "json",
-                    beforeSend: function (xhr, setting) {
-                        $('#main_loading').show();
-                    }
                 });
                 alert('位置情報を送信しました。');
                 modal.close();
-                $('#main_loading').hide();
+                $('#loading').hide();
             });
         });
     }
