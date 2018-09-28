@@ -193,9 +193,9 @@ class main {
             }
             data = null;
             main.drawMarker(MAP_OBJ, dataInCell);
-                setTimeout(function(){ $("#loading").hide();},1000);
+            setTimeout(function(){ $("#loading").hide();},1000);
         }else{
-            jsonLoad(url).then(async function(data){
+            jsonLoad(url).then(function(data){
                 localStorage.setItem(QUERY['facility'],JSON.stringify(data));
                 var dataInCell = [];
                 if(getDistance(CURRENT_LAT, CURRENT_LNG, 35.319017,139.550689) >50 ){
