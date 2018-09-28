@@ -13,7 +13,6 @@ var NORTH, SOUTH, EAST, WEST;
 var CURRENT_POSITION_MARKER;
 var CURRENT_LAT, CURRENT_LNG;
 var CELLSIZE = 3;
-var MAX_ZOOM = 20;
 
 var MAP_API_KEY = 'AIzaSyC3SP-PR2DvhwgdVjtiT8pl9HXnX_5YZ4k';
 var APP_ROOT = 'https://snst-lab.github.io/rescuemap-at-kamakura/public/';
@@ -111,6 +110,8 @@ class main {
                 timeout: 5000
             });
         } else {
+            CURRENT_LAT = 35.319017;
+            CURRENT_LNG = 139.550689;
             console.log("Your device does not support Geolocation API");
             return false;
         }
