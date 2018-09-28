@@ -442,14 +442,13 @@ class main {
             if(isset(QUERY['hash'])){
               reqBody['hash']=QUERY['hash'];
             }else{
-              alert('LINE IDを特定できません。もう一度LINE BOTにメッセージを送り地図を開いてください。')
+              alert('LINE IDを特定できません。もう一度トーク画面メニューの「自分の場所を知らせる」から地図を開いてください。')
               return false;
             }
 
             const self = this;
             main.showMapTrim($(self).attr('lat'),$(self).attr('lng'));
             modal.open();
-
 
            $("#publish").off("click");
            $("#publish").on("click", function(){
