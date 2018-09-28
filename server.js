@@ -255,35 +255,35 @@ const Main = function(app){
                     event.replyFlex(flex);
                     break;
                 case 'broadCast':
-                    event.replyText("左下のキーボードボタンをクリックし、メッセージを入力・送信してください。");
                     bot.writeDatabase(event.source.userId, 'action=broadCast',linebot.hash, linebot.displayName, linebot.pictureUrl);
+                    throw "左下のキーボードボタンをクリックし、メッセージを入力・送信してください。";
                     break;
                 default:
-                    throw 'No Action Detected.';
+                    const status = util.queryParse(linebot.status);
+                    if(status['action']=='broadCast'){
+                           const message = linebot.displayName+'からの伝言「' + event.message.text +'」';　
+                           bot.db.botstatus.find({}, (err, users)=>{
+                              for(var i in users){
+                                  if(users[i]["lineid"]!='undefined'){
+                                      bot.pushText(users[i]["lineid"],message);
+                                  }
+                              }
+                          });
+                          bot.writeDatabase(event.source.userId, 'action=null',linebot.hash, linebot.displayName, linebot.pictureUrl);
+                    }else{
+                          throw '下部メニューから操作を選んでください↓';
+                    }
                     break;
             }
 
           }catch(e){
-               console.log(e);
+               event.replyText(e);
           }
     }
 
-    bot.onMessageEvent = function(event,query){
+    bot.onMessageEvent = function(event,queryStr){
         bot.readDatabase(event.source.userId).then(function(linebot) {
-           const status = util.queryParse(linebot.status);
-           if(status['action']=='broadCast'){
-                 const message = linebot.displayName+'からの伝言「' + event.message.text +'」';　
-                 bot.db.botstatus.find({}, (err, users)=>{
-                    for(var i in users){
-                        if(users[i]["lineid"]!='undefined'){
-                            bot.pushText(users[i]["lineid"],message);
-                        }
-                    }
-                });
-                bot.writeDatabase(event.source.userId, 'action=null',linebot.hash, linebot.displayName, linebot.pictureUrl);
-           }else{
-                bot.getAction(event,linebot,query);
-           }
+            bot.getAction(event,linebot,queryStr);
           
         }).catch(function (err) {
             return false;
