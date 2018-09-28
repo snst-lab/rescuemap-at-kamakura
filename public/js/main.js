@@ -22,6 +22,7 @@ function init(){
     QUERY = getQuery();
     main.showMap();
     main.onButtonClick();
+    setTimeout(function(){ $("#loading").hide();},1000);
 }
 
 class main {
@@ -128,9 +129,7 @@ class main {
         }
     }
 
-    static pullMarker(north, south, east, west) {
-        $('#loading').show();
-
+    static async pullMarker(north, south, east, west) {
         if(isset(QUERY)){
             switch(QUERY['facility']){
                 case 'aed':
@@ -186,17 +185,16 @@ class main {
                 MAP_OBJ.panTo(new google.maps.LatLng(35.319017,139.550689));
             }
             for(var i=0;i<data.length;i++){
-                data[i]["distance"] = getDistance(CURRENT_LAT, CURRENT_LNG, data[i]["lat"], data[i]["lng"])+' km';
                 if( data[i]['lat'] < north && data[i]['lat'] > south && data[i]['lng'] < east && data[i]['lng'] > west ) {
+                    data[i]["distance"] = getDistance(CURRENT_LAT, CURRENT_LNG, data[i]["lat"], data[i]["lng"])+' km';
                     dataInCell.push(data[i]);
                 }
             }
             data = null;
             main.drawMarker(MAP_OBJ, dataInCell);
-            $("#loading").hide();
-
+                setTimeout(function(){ $("#loading").hide();},1000);
         }else{
-            jsonLoad(url).then(function(data){
+            jsonLoad(url).then(async function(data){
                 localStorage.setItem(QUERY['facility'],JSON.stringify(data));
                 var dataInCell = [];
                 if(getDistance(CURRENT_LAT, CURRENT_LNG, 35.319017,139.550689) >50 ){
@@ -210,7 +208,7 @@ class main {
                 }
                 data = null;
                 main.drawMarker(MAP_OBJ, dataInCell);
-                $("#loading").hide();
+                setTimeout(function(){ $("#loading").hide();},1000);
           });
         }
     }
@@ -421,6 +419,7 @@ class main {
         });
 
         $('.facility').click(function(){
+            $('#loading').show();
             QUERY['facility']=$(this).attr('facility');
             var bounds = MAP_OBJ.getBounds();
             var bounds_json = $.parseJSON(JSON.stringify(bounds));
