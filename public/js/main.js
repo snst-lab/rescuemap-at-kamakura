@@ -387,6 +387,7 @@ class main {
             streetViewControl: true,
             fullscreenControl: false,
             mapTypeControl: false,
+            streetViewControl: false,
             mapTypeId: google.maps.MapTypeId.ROADMAP,
             mapTypeControlOptions: {
                 style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
