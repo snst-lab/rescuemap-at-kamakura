@@ -134,10 +134,6 @@ $("#overlay").click(function () {
   modal.close();
 });
 
-$("#message").click(function(){
-  $(window).scrollTop(300);
-})
-
 
 function jsonLoad(dataUrl){
   return new Promise((resolve, reject) =>  {

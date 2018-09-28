@@ -30,12 +30,7 @@
                             "type": "image",
                             "url": "https://snst-lab.github.io/rescuemap-at-kamakura/public/img/aed.png",
                             "aspectRatio": "3:1",
-                            "gravity": "center",
-                            "action": {
-                                "type": "uri",
-                                "label": "AED",
-                                "uri": "https://snst-lab.github.io/rescuemap-at-kamakura/public/?facility=aed"
-                            }
+                            "gravity": "center"
                         },
                         {
                             "type": "button",
@@ -43,7 +38,7 @@
                             "action": {
                                 "type": "uri",
                                 "label": "AED",
-                                "uri": "https://snst-lab.github.io/rescuemap-at-kamakura/public/?facility=aed"
+                                "uri": "https://snst-lab.github.io/rescuemap-at-kamakura/public/?facility=aed&hash=HASH"
                             }
                         }
                     ]
@@ -59,12 +54,7 @@
                             "type": "image",
                             "url": "https://snst-lab.github.io/rescuemap-at-kamakura/public/img/hydrant.png",
                             "aspectRatio": "3:1",
-                            "gravity": "center",
-                            "action": {
-                                "type": "uri",
-                                "label": "AED",
-                                "uri": "https://snst-lab.github.io/rescuemap-at-kamakura/public/?facility=hydrant"
-                            }
+                            "gravity": "center"
                         },
                         {
                             "type": "button",
@@ -72,7 +62,7 @@
                             "action": {
                                 "type": "uri",
                                 "label": "消火栓",
-                                "uri": "https://snst-lab.github.io/rescuemap-at-kamakura/public/?facility=hydrant"
+                                "uri": "https://snst-lab.github.io/rescuemap-at-kamakura/public/?facility=hydrant&hash=HASH"
                             }
                         }
                     ]
@@ -88,12 +78,7 @@
                             "type": "image",
                             "url": "https://snst-lab.github.io/rescuemap-at-kamakura/public/img/watertank.png",
                             "aspectRatio": "3:1",
-                            "gravity": "center",
-                            "action": {
-                                "type": "uri",
-                                "label": "AED",
-                                "uri": "https://snst-lab.github.io/rescuemap-at-kamakura/public/?facility=watertank"
-                            }
+                            "gravity": "center"
                         },
                         {
                             "type": "button",
@@ -101,7 +86,7 @@
                             "action": {
                                 "type": "uri",
                                 "label": "防火水槽",
-                                "uri": "https://snst-lab.github.io/rescuemap-at-kamakura/public/?facility=watertank"
+                                "uri": "https://snst-lab.github.io/rescuemap-at-kamakura/public/?facility=watertank&hash=HASH"
                             }
                         }
                     ]
@@ -117,12 +102,7 @@
                             "type": "image",
                             "url": "https://snst-lab.github.io/rescuemap-at-kamakura/public/img/widearea-shelters.png",
                             "aspectRatio": "3:1",
-                            "gravity": "center",
-                            "action": {
-                                "type": "uri",
-                                "label": "AED",
-                                "uri": "https://snst-lab.github.io/rescuemap-at-kamakura/public/?facility=widearea-shelters"
-                            }
+                            "gravity": "center"
                         },
                         {
                             "type": "button",
@@ -130,7 +110,7 @@
                             "action": {
                                 "type": "uri",
                                 "label": "広域避難所",
-                                "uri": "https://snst-lab.github.io/rescuemap-at-kamakura/public/?facility=widearea-shelters"
+                                "uri": "https://snst-lab.github.io/rescuemap-at-kamakura/public/?facility=widearea-shelters&hash=HASH"
                             }
                         }
                     ]
@@ -146,12 +126,7 @@
                             "type": "image",
                             "url": "https://snst-lab.github.io/rescuemap-at-kamakura/public/img/welfare-shelters.png",
                             "aspectRatio": "3:1",
-                            "gravity": "center",
-                            "action": {
-                                "type": "uri",
-                                "label": "AED",
-                                "uri": "https://snst-lab.github.io/rescuemap-at-kamakura/public/?facility=welfare-shelters"
-                            }
+                            "gravity": "center"
                         },
                         {
                             "type": "button",
@@ -159,7 +134,7 @@
                             "action": {
                                 "type": "uri",
                                 "label": "福祉避難所",
-                                "uri": "https://snst-lab.github.io/rescuemap-at-kamakura/public/?facility=welfare-shelters"
+                                "uri": "https://snst-lab.github.io/rescuemap-at-kamakura/public/?facility=welfare-shelters&hash=HASH"
                             }
                         }
                     ]
@@ -175,12 +150,7 @@
                             "type": "image",
                             "url": "https://snst-lab.github.io/rescuemap-at-kamakura/public/img/public.png",
                             "aspectRatio": "3:1",
-                            "gravity": "center",
-                            "action": {
-                                "type": "uri",
-                                "label": "AED",
-                                "uri": "https://snst-lab.github.io/rescuemap-at-kamakura/public/?facility=public"
-                            }
+                            "gravity": "center"
                         },
                         {
                             "type": "button",
@@ -188,7 +158,7 @@
                             "action": {
                                 "type": "uri",
                                 "label": "公共施設",
-                                "uri": "https://snst-lab.github.io/rescuemap-at-kamakura/public/?facility=public"
+                                "uri": "https://snst-lab.github.io/rescuemap-at-kamakura/public/?facility=public&hash=HASH"
                             }
                         }
                     ]
@@ -204,12 +174,7 @@
                             "type": "image",
                             "url": "https://snst-lab.github.io/rescuemap-at-kamakura/public/img/universal.png",
                             "aspectRatio": "3:1",
-                            "gravity": "center",
-                            "action": {
-                                "type": "uri",
-                                "label": "AED",
-                                "uri": "https://snst-lab.github.io/rescuemap-at-kamakura/public/?facility=universal"
-                            }
+                            "gravity": "center"
                         },
                         {
                             "type": "button",
@@ -217,7 +182,31 @@
                             "action": {
                                 "type": "uri",
                                 "label": "バリアフリー施設",
-                                "uri": "https://snst-lab.github.io/rescuemap-at-kamakura/public/?facility=universal"
+                                "uri": "https://snst-lab.github.io/rescuemap-at-kamakura/public/?facility=universal&hash=HASH"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "separator"
+                },
+                {
+                    "type": "box",
+                    "layout": "horizontal",
+                    "contents": [
+                        {
+                            "type": "image",
+                            "url": "https://snst-lab.github.io/rescuemap-at-kamakura/public/img/marker.png",
+                            "aspectRatio": "3:1",
+                            "gravity": "center"
+                        },
+                        {
+                            "type": "button",
+                            "gravity": "center",
+                            "action": {
+                                "type": "uri",
+                                "label": "地図のみ",
+                                "uri": "https://snst-lab.github.io/rescuemap-at-kamakura/public/?hash=HASH"
                             }
                         }
                     ]
