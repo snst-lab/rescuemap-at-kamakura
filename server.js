@@ -256,7 +256,7 @@ const Main = function(app){
                     break;
                 case 'broadCast':
                     bot.writeDatabase(event.source.userId, 'action=broadCast',linebot.hash, linebot.displayName, linebot.pictureUrl);
-                    throw "左下のキーボードボタンをクリックし、メッセージを入力・送信してください。";
+                    throw "左下のキーボードボタンをクリックし、メッセージを入力・送信してください。\n ※送信したメッセージはユーザー全体に公開されます！\n ※入力待ちを解除するには、メニューから別アクションを選択してください。";
                     break;
                 default:
                     const status = util.queryParse(linebot.status);
