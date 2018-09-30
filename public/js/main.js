@@ -62,7 +62,8 @@ class main {
     static getPosition() {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(function (position) {
-                var current_position = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+                // var current_position = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+                var current_position = new google.maps.LatLng(35.319017, 139.550689);
                 CURRENT_LAT = current_position.lat();
                 CURRENT_LNG = current_position.lng();
 
